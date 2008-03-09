@@ -11,7 +11,6 @@ my $services = defined($ENV{NOPASTE_SERVICES})
 my $url = App::Nopaste->nopaste(
     text     => $text,
     nick     => $ENV{NOPASTE_NICK},
-    service  => $ENV{NOPASTE_SERVICE},
     services => $services,
 );
 

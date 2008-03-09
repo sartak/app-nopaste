@@ -11,21 +11,19 @@ sub nopaste {
     my $self = shift if @_ % 2;
     my %args = @_;
 
-    if (!defined($args{service})) {
-        unless (ref($args{services}) eq 'ARRAY' && @{$args{services}}) {
-            $args{services} = [ $self->plugins ];
-        }
-
-        $args{service} = $args{services}->[0]
-            or Carp::croak "No App::Nopaste::Service module found";
+    unless (ref($args{services}) eq 'ARRAY' && @{$args{services}}) {
+        $args{services} = [ $self->plugins ];
     }
+
+    $args{services}->[0]
+        or Carp::croak "No App::Nopaste::Service module found";
 
     defined $args{text}
         or Carp::croak "You must specify the text to nopaste";
 
     $args{error_handler} ||= sub { warn $_[0] };
 
-    for my $service (@{ $args{services} || [ $args{service} ] }) {
+    for my $service (@{ $args{services} }) {
         $service = "App::Nopaste::Service::$service"
             unless $service =~ /^App::Nopaste::Service/;
 
@@ -113,8 +111,7 @@ C<nopaste --help>.
             warn $error;
         },
 
-        # you may specify a service or services to use - but you don't have to
-        service => "Rafb",
+        # you may specify the services to use - but you don't have to
         services => ["Rafb", "Husk"],
     );
 
