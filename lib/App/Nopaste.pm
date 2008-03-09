@@ -7,12 +7,6 @@ use Module::Pluggable search_path => 'App::Nopaste::Service';
 use base 'Exporter';
 our @EXPORT_OK = 'nopaste';
 
-sub _require {
-    my $package = shift;
-    (my $file = "$package.pm") =~ s{::}{/}g;
-    require $file;
-}
-
 sub nopaste {
     my $self = shift if @_ % 2;
     my %args = @_;
@@ -36,7 +30,8 @@ sub nopaste {
             unless $service =~ /^App::Nopaste::Service/;
 
         my @ret = eval {
-            _require $service;
+            (my $file = "$service.pm") =~ s{::}{/}g;
+            require $file;
             $service->nopaste(%args);
         };
 
