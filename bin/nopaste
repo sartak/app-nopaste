@@ -8,13 +8,12 @@ my $text = do { local $/; <> };
 my $services = defined($ENV{NOPASTE_SERVICES})
             && [split ' ', $ENV{NOPASTE_SERVICES}];
 
-my ($ok, $message) = App::Nopaste->nopaste(
+my $url = App::Nopaste->nopaste(
     text     => $text,
     nick     => $ENV{NOPASTE_NICK},
     service  => $ENV{NOPASTE_SERVICE},
     services => $services,
 );
 
-print "$message\n" if $ok;
-warn $message if not $ok;
+print "$url\n" if $url;
 

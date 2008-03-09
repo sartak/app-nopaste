@@ -28,12 +28,19 @@ sub nopaste {
     defined $args{text}
         or Carp::croak "You must specify the text to nopaste";
 
+    $args{error_handler} ||= sub { warn $_[0] };
+
     for my $service (@{ $args{services} || [ $args{service} ] }) {
         my @ret = $service->nopaste(%args);
         if ($ret[0]) {
             return $ret[1];
         }
+        else {
+            $args{error_handler}->($ret[1], $service);
+        }
     }
+
+    return undef;
 }
 
 =head1 NAME
@@ -96,6 +103,12 @@ C<nopaste --help>.
         lang => "perl",
         chan => "#moose",
 
+        # this is the default, but maybe you want to do something different
+        error_handler => sub {
+            my ($error, $service) = @_;
+            warn $error;
+        },
+
         # you may specify a service or services to use - but you don't have to
         service => "Rafb",
         services => ["Rafb", "Husk"],
@@ -104,10 +117,9 @@ C<nopaste --help>.
     die $url_or_error if not $ok; # error
     print $url_or_error;          # url
 
-The C<nopaste> function will return a two-element list. The first element will
-be a boolean. If it's true, then the paste succeeded and the second element
-is the URL to the paste. If it's false, then the paste failed and the second
-element is the error message.
+The C<nopaste> function will return the URL of the paste on success, or
+C<undef> on failure. For each failure, the C<error_handler> argument is invoked
+with the error message and the service that issued it.
 
 =head1 SEE ALSO
 
