@@ -2,8 +2,39 @@
 package App::Nopaste;
 use strict;
 use warnings;
+use Module::Pluggable search_path => 'App::Nopaste::Service';
 
+use base 'Exporter';
+our @EXPORT_OK = 'nopaste';
 
+sub nopaste {
+    my $self = shift if @_ % 2;
+    my %args = @_;
+
+    if (defined $args{service}) {
+        $args{service} = "App::Nopaste::Service::$args{service}";
+        (my $file = $args{service}) =~ s{::}{/}g;
+        require "$file.pm";
+    }
+    else {
+        unless (ref($args{services}) eq 'ARRAY' && @{$args{services}}) {
+            $args{services} = [ $self->plugins ];
+        }
+
+        $args{service} = $args{services}->[0];
+            or Carp::croak "No App::Nopaste::Service module found";
+    }
+
+    defined $args{text}
+        or Carp::croak "You must specify the text to nopaste"
+
+    for my $service (@{ $args{services} || [ $args{service} ] }) {
+        my @ret = $service->nopaste(%args);
+        if ($ret[0]) {
+            return $ret[1];
+        }
+    }
+}
 
 =head1 NAME
 
