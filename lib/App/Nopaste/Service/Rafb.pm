@@ -22,5 +22,15 @@ sub run {
     return (1, $paster->uri);
 }
 
+=head1 NAME
+
+App::Nopaste::Service::Rafb - http://www.rafb.net/paste/
+
+=head1 SEE ALSO
+
+L<WWW::Rafb::Create>
+
+=cut
+
 1;
 

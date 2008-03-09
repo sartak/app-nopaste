@@ -21,5 +21,15 @@ sub run {
     return (1, $paster->paste_uri);
 }
 
+=head1 NAME
+
+App::Nopaste::Service::PastebinCom - http://pastebin.com/
+
+=head1 SEE ALSO
+
+L<WWW::PastebinCom::Create>
+
+=cut
+
 1;
 
