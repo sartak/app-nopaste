@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use base 'App::Nopaste::Service';
 
-sub uri { "http://paste.scsys.co.uk/" }
+sub uri { "http://paste.scsys.co.uk" }
 
 =head1 NAME
 
