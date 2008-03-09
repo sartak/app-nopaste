@@ -21,12 +21,12 @@ sub nopaste {
             $args{services} = [ $self->plugins ];
         }
 
-        $args{service} = $args{services}->[0];
+        $args{service} = $args{services}->[0]
             or Carp::croak "No App::Nopaste::Service module found";
     }
 
     defined $args{text}
-        or Carp::croak "You must specify the text to nopaste"
+        or Carp::croak "You must specify the text to nopaste";
 
     for my $service (@{ $args{services} || [ $args{service} ] }) {
         my @ret = $service->nopaste(%args);
