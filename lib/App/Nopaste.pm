@@ -90,9 +90,22 @@ L<App::Nopaste::Service::Foo> module and anyone can begin using it.
 
 =head2 CLI
 
-You probably want to use the included command-line utility, C<nopaste>. The
-documentation for that is over in that file. Try C<man nopaste> or
-C<nopaste --help>.
+(Sorry, the command-line utility doesn't have separate documentation yet)
+
+The CLI pays attention to the following environment variables:
+
+    NOPASTE_NICK - Your nickname
+        (e.g. "sartak")
+
+    NOPASTE_SERVICES - A space-separated list of services to try in order
+        (e.g. "Shadowcat PastebinCom Rafb")
+
+In the usual Perl manner, you can pass text in via STDIN or through named files
+as arguments. Multiple files will be concatenated into one paste (this may
+change in the future).
+
+It prints on STDOUT the paste URI - if one was available. It warns on STDERR
+any errors that occur.
 
 =head2 C<App::Nopaste>
 
