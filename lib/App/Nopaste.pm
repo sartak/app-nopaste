@@ -32,12 +32,12 @@ sub nopaste {
 
     for my $service (@{ $args{services} || [ $args{service} ] }) {
         my @ret = $service->nopaste(%args);
-        if ($ret[0]) {
-            return $ret[1];
-        }
-        else {
-            $args{error_handler}->($ret[1], $service);
-        }
+
+        # success!
+        return $ret[1] if $ret[0];
+
+        # failure!
+        $args{error_handler}->($ret[1], $service);
     }
 
     return undef;
