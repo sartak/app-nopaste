@@ -21,7 +21,7 @@ sub run {
 
 sub uri {
     my $class = ref($_[0]) || $_[0];
-    croak "$class must provide a 'uri' method.";
+    Carp::croak "$class must provide a 'uri' method.";
 }
 
 sub get {
