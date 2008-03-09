@@ -5,7 +5,11 @@ use inc::Module::Install;
 name           'App-Nopaste';
 all_from       'lib/App/Nopaste.pm';
 
-requires       '';
+requires       'WWW::Mechanize';
+requires       'Module::Pluggable';
+
+recommends     'WWW::PastebinCom::Create';
+recommends     'WWW::Rafb::Create';
 
 build_requires 'Test::More';
 
