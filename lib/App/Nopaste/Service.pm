@@ -54,7 +54,7 @@ sub return {
     my $link = $mech->find_link(url_regex => qr{/?(?:\d+)$});
 
     return (0, "Could not find paste link.") if !$link;
-    return (1, $link->uri);
+    return (1, $link->url);
 }
 
 =head1 NAME
