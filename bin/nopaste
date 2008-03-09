@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use App::Nopaste;
+
+my $text = do { local $/; <> };
+
+my ($ok, $message) = App::Nopaste->nopaste(
+    text => $text,
+);
+
+print "$message\n" if $ok;
+warn $message if not $ok;
+
