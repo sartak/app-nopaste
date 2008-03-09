@@ -38,7 +38,7 @@ sub nopaste {
 
 =head1 NAME
 
-App::Nopaste - ???
+App::Nopaste - easy access to any pastebin
 
 =head1 VERSION
 
@@ -50,16 +50,68 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-    use App::Nopaste;
-    do_stuff();
+    use App::Nopaste 'nopaste';
+
+    nopaste(text => q{
+        perl -wle 'print "Prime" if (1 x shift) !~ /^1?$|^(11+?)\1+$/' [number]
+    });
+
+    # or on the command line:
+    nopaste test.pl
+    => http://pastebin.com/fcba51f
 
 =head1 DESCRIPTION
 
+Pastebins (also known as nopaste sites) let you post text, usually code, for
+public viewing. They're used a lot in IRC channels to show code that would
+normally be too long to give directly in the channel (hence the name nopaste).
 
+Each nopaste site is slightly different. When one nopaste site goes down (I'm
+looking at you, L<http://paste.husk.org>), then you have to find a new one. And
+if you usually use a script to publish text, then it's too much hassle.
+
+This module aims to smooth out the differences between nopaste sites, and
+provides redundancy: if one site doesn't work, then it just tries a different
+one.
+
+It's also modular: you only need to put on CPAN a
+L<App::Nopaste::Service::Foo> module and anyone can begin using it.
+
+=head1 INTERFACE
+
+=head2 CLI
+
+You probably want to use the included command-line utility, C<nopaste>. The
+documentation for that is over in that file. Try C<man nopaste> or
+C<nopaste --help>.
+
+=head2 C<App::Nopaste>
+
+    use App::Nopaste 'nopaste';
+
+    my ($ok, $url_or_error) = nopaste(
+        text => "Full text to paste (the only mandatory argument)",
+        desc => "A short description of the paste",
+        nick => "Your nickname",
+        lang => "perl",
+        chan => "#moose",
+
+        # you may specify a service or services to use - but you don't have to
+        service => "Rafb",
+        services => ["Rafb", "Husk"],
+    );
+
+    die $url_or_error if not $ok; # error
+    print $url_or_error;          # url
+
+The C<nopaste> function will return a two-element list. The first element will
+be a boolean. If it's true, then the paste succeeded and the second element
+is the URL to the paste. If it's false, then the paste failed and the second
+element is the error message.
 
 =head1 SEE ALSO
 
-L<Foo::Bar>
+L<WebService::NoPaste>, L<WWW::PastebinCom::Create>, L<WWW::Rafb::Create>
 
 =head1 AUTHOR
 
@@ -73,37 +125,9 @@ Please report any bugs through RT: email
 C<bug-app-nopaste at rt.cpan.org>, or browse
 L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=App-Nopaste>.
 
-=head1 SUPPORT
-
-You can find this documentation for this module with the perldoc command.
-
-    perldoc App::Nopaste
-
-You can also look for information at:
-
-=over 4
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/App-Nopaste>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/App-Nopaste>
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=App-Nopaste>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/App-Nopaste>
-
-=back
-
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007 Shawn M Moore.
+Copyright 2008 Shawn M Moore.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
