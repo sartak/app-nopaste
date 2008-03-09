@@ -21,7 +21,7 @@ features(
 
 build_requires 'Test::More';
 
-install_script 'nopaste';
+install_script 'bin/nopaste';
 
 auto_install;
 WriteAll;
