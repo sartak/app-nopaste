@@ -5,8 +5,14 @@ use App::Nopaste;
 
 my $text = do { local $/; <> };
 
+my $services = defined($ENV{NOPASTE_SERVICES})
+            && [split ' ', $ENV{NOPASTE_SERVICES}];
+
 my ($ok, $message) = App::Nopaste->nopaste(
-    text => $text,
+    text     => $text,
+    nick     => $ENV{NOPASTE_NICK},
+    service  => $ENV{NOPASTE_SERVICE},
+    services => $services,
 );
 
 print "$message\n" if $ok;
