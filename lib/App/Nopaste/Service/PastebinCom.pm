@@ -9,12 +9,13 @@ sub run {
     my $self = shift;
     my %args = @_;
 
+    $args{poster} = delete $args{nick} if defined $args{nick};
+    $args{format} = delete $args{lang} if defined $args{lang};
+
     my $paster = WWW::PastebinCom::Create->new;
     my $ok = $paster->paste(
-        text   => $args{text},
-        poster => $args{nick},
-        format => $args{lang},
         expiry => 'm',
+        %args,
     );
 
     return (0, $paster->error) unless $ok;

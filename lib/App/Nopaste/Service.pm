@@ -38,12 +38,12 @@ sub fill_form {
 
     $mech->submit_form(
         form_number   => 1,
-        fields         => {
-            paste      => $args{text},
-            channel    => $args{chan},
-            nick       => $args{nick},
-            summary    => $args{desc},
-        }
+        fields        => {
+            paste => $args{text},
+            do { $args{chan} ? (channel => $args{chan}) : () },
+            do { $args{desc} ? (summary => $args{desc}) : () },
+            do { $args{nick} ? (nick    => $args{nick}) : () },
+        },
     );
 }
 

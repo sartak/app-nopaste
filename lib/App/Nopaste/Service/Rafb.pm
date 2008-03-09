@@ -12,10 +12,7 @@ sub run {
     my $paster = WWW::Rafb::Create->new;
     my $ok = $paster->paste(
         $args{text},
-        nick => $args{nick},
-        desc => $args{desc},
-        tabs => $args{tabs},
-        lang => $args{lang},
+        %args,
     );
 
     return (0, $paster->error) unless $ok;
