@@ -8,8 +8,16 @@ all_from       'lib/App/Nopaste.pm';
 requires       'WWW::Mechanize';
 requires       'Module::Pluggable';
 
-recommends     'WWW::PastebinCom::Create';
-recommends     'WWW::Rafb::Create';
+features(
+    'nopaste to pastebin.com' => [
+        -default => 1,
+        requires('WWW::PastebinCom::Create'),
+    ],
+    'nopaste to rafb.net' => [
+        -default => 1,
+        requires('WWW::Rafb::Create'),
+    ],
+);
 
 build_requires 'Test::More';
 
