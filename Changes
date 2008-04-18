@@ -1,5 +1,7 @@
 Revision history for App-Nopaste
 
+0.03
+
 0.02    Thu Apr 17 20:25:29 2008
         Use #!/usr/bin/perl instead of #!/usr/bin/env perl so M:I replaces it
         DO NOT RENAME YOUR MODULES AND NEEDLESSLY CHANGE THEIR INTERFACES PLEASE
