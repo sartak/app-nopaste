@@ -15,7 +15,7 @@ features(
     ],
     'nopaste to rafb.net' => [
         -default => 1,
-        requires('WWW::Rafb::Create'),
+        requires('WWW::Pastebin::RafbNet::Create'),
     ],
 );
 
