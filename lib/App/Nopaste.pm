@@ -51,7 +51,7 @@ App::Nopaste - easy access to any pastebin
 
 =head1 VERSION
 
-Version 0.02 released ???
+Version 0.02 released 17 Apr 08
 
 =cut
 
