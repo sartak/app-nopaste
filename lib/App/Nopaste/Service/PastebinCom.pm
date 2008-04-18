@@ -3,7 +3,7 @@ package App::Nopaste::Service::PastebinCom;
 use strict;
 use warnings;
 use base 'App::Nopaste::Service';
-use WWW::PastebinCom::Create;
+use WWW::Pastebin::PastebinCom::Create;
 
 sub run {
     my $self = shift;
@@ -12,7 +12,7 @@ sub run {
     $args{poster} = delete $args{nick} if defined $args{nick};
     $args{format} = delete $args{lang} if defined $args{lang};
 
-    my $paster = WWW::PastebinCom::Create->new;
+    my $paster = WWW::Pastebin::PastebinCom::Create->new;
     my $ok = $paster->paste(
         expiry => 'm',
         %args,
@@ -28,7 +28,7 @@ App::Nopaste::Service::PastebinCom - http://pastebin.com/
 
 =head1 SEE ALSO
 
-L<WWW::PastebinCom::Create>
+L<WWW::Pastebin::PastebinCom::Create>
 
 =cut
 

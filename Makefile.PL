@@ -11,7 +11,7 @@ requires       'Module::Pluggable';
 features(
     'nopaste to pastebin.com' => [
         -default => 1,
-        requires('WWW::PastebinCom::Create'),
+        requires('WWW::Pastebin::PastebinCom::Create'),
     ],
     'nopaste to rafb.net' => [
         -default => 1,
