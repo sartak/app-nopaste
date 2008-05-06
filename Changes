@@ -1,5 +1,7 @@
 Revision history for App-Nopaste
 
+0.04
+
 0.03    Tue May  6 04:31:08 2008
         App::Nopaste will now look at environment variables instead of nopaste
         Better handling of weird argument counts to nopaste
