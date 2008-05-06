@@ -97,6 +97,8 @@ The CLI pays attention to the following environment variables:
     NOPASTE_NICK - Your nickname
         (e.g. "sartak")
 
+    USER - fallback for NOPASTE_NICK
+
     NOPASTE_SERVICES - A space-separated list of services to try in order
         (e.g. "Shadowcat PastebinCom Rafb")
 
