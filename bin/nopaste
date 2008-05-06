@@ -1,18 +1,11 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use App::Nopaste;
+use App::Nopaste 'nopaste';
 
 my $text = do { local $/; <> };
 
-my $services = defined($ENV{NOPASTE_SERVICES})
-            && [split ' ', $ENV{NOPASTE_SERVICES}];
-
-my $url = App::Nopaste->nopaste(
-    text     => $text,
-    nick     => $ENV{NOPASTE_NICK} || $ENV{USER},
-    services => $services,
-);
+my $url = nopaste(text => $text);
 
 if ($url) {
     print $url;

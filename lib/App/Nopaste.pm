@@ -8,8 +8,24 @@ use base 'Exporter';
 our @EXPORT_OK = 'nopaste';
 
 sub nopaste {
-    my $self = shift if @_ % 2;
+
+    # allow "nopaste($text)"
+    unshift @_, 'text' if @_ == 1;
+
+    # only look for $self if we have odd number of arguments
+    my $self;
+    $self = @_ % 2 ? shift : __PACKAGE__;
+
+    # everything else
     my %args = @_;
+
+    $args{services} = defined($ENV{NOPASTE_SERVICES})
+                   && [split ' ', $ENV{NOPASTE_SERVICES}]
+                        if !exists($args{services});
+
+    $args{nick} = $ENV{NOPASTE_NICK} || $ENV{USER}
+        if !exists($args{nick});
+
 
     unless (ref($args{services}) eq 'ARRAY' && @{$args{services}}) {
         $args{services} = [ $self->plugins ];
