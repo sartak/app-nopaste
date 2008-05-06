@@ -69,7 +69,7 @@ App::Nopaste - easy access to any pastebin
 
 =head1 VERSION
 
-Version 0.03 released ???
+Version 0.03 released 06 May 08
 
 =cut
 
