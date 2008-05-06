@@ -8,6 +8,7 @@ use base 'Exporter';
 our @EXPORT_OK = 'nopaste';
 
 sub nopaste {
+    # process arguments {{{
     # allow "nopaste($text)"
     unshift @_, 'text' if @_ == 1;
 
@@ -18,7 +19,6 @@ sub nopaste {
     # everything else
     my %args = @_;
 
-    # process arguments {{{
     $args{services} = defined($ENV{NOPASTE_SERVICES})
                    && [split ' ', $ENV{NOPASTE_SERVICES}]
                         if !exists($args{services});
@@ -79,7 +79,7 @@ our $VERSION = '0.03';
 
     use App::Nopaste 'nopaste';
 
-    nopaste(q{
+    my $url = nopaste(q{
         perl -wle 'print "Prime" if (1 x shift) !~ /^1?$|^(11+?)\1+$/' [number]
     });
 
@@ -138,8 +138,7 @@ any errors that occur.
         services => ["Rafb", "Husk"],
     );
 
-    die $url_or_error if not $ok; # error
-    print $url_or_error;          # url
+    print $url if $url;
 
 The C<nopaste> function will return the URL of the paste on
 success, or C<undef> on failure.
@@ -149,15 +148,13 @@ message and the service that issued it.
 
 =head1 SEE ALSO
 
-L<WebService::NoPaste>, L<WWW::PastebinCom::Create>, L<WWW::Rafb::Create>
+L<WebService::NoPaste>, L<WWW::PastebinCom::Create>, L<WWW::Rafb::Create>, L<Devel::REPL::Plugin::Nopaste>
 
 =head1 AUTHOR
 
 Shawn M Moore, C<< <sartak at gmail.com> >>
 
 =head1 BUGS
-
-No known bugs.
 
 Please report any bugs through RT: email
 C<bug-app-nopaste at rt.cpan.org>, or browse
