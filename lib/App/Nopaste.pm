@@ -37,7 +37,7 @@ sub nopaste {
     defined $args{text}
         or Carp::croak "You must specify the text to nopaste";
 
-    $args{error_handler} ||= sub { warn $_[0] };
+    $args{error_handler} ||= sub { warn "$_[1]: $_[0]" };
 
     for my $service (@{ $args{services} }) {
         $service = "App::Nopaste::Service::$service"
@@ -139,7 +139,7 @@ any errors that occur.
         # this is the default, but maybe you want to do something different
         error_handler => sub {
             my ($error, $service) = @_;
-            warn $error;
+            warn "$service: $error";
         },
 
         # you may specify the services to use - but you don't have to
