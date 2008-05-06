@@ -14,5 +14,8 @@ my $url = App::Nopaste->nopaste(
     services => $services,
 );
 
-print "$url\n" if $url;
+if ($url) {
+    print $url;
+    print "\n";
+}
 
