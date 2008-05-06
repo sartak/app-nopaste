@@ -4,8 +4,7 @@ use warnings;
 use App::Nopaste 'nopaste';
 
 my $text = do { local $/; <> };
-
-my $url = nopaste(text => $text);
+my $url = nopaste($text);
 
 if ($url) {
     print $url;
