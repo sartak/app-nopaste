@@ -14,7 +14,7 @@ sub fill_form {
     $mech->submit_form(
         form_number   => 1,
         fields        => {
-            body => fix_eqns($args{text}),
+            body => $self->fix_eqns($args{text}),
             do { $args{desc} ? (title => $args{desc}) : () },
             do { $args{nick} ? (name  => $args{nick}) : () },
         },
@@ -32,6 +32,7 @@ sub return {
 }
 
 sub fix_eqns {
+    my $self = shift;
     my $text = shift;
 
     $text =~ s"\\\["[EQ]"g;
