@@ -73,4 +73,14 @@ sub fix_eqns {
     return $text;
 }
 
+=head1 NAME
+
+App::Nopaste::Service::Mathbin - http://www.mathbin.net/
+
+=head1 AUTHOR
+
+Jesse Luehrs, C<< <jluehrs2 at uiuc.edu> >>
+
+=cut
+
 1;
