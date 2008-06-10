@@ -3,11 +3,16 @@ package App::Nopaste::Service::PastebinCom;
 use strict;
 use warnings;
 use base 'App::Nopaste::Service';
-use WWW::Pastebin::PastebinCom::Create;
+
+sub available {
+    eval "require WWW::Pastebin::PastebinCom::Create; 1"
+}
 
 sub run {
     my $self = shift;
     my %args = @_;
+
+    require WWW::Pastebin::PastebinCom::Create;
 
     $args{poster} = delete $args{nick} if defined $args{nick};
     $args{format} = delete $args{lang} if defined $args{lang};

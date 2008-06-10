@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use WWW::Mechanize;
 
+sub available { 1 }
+
 # this wrapper is so we can canonicalize arguments, especially "lang"
 sub nopaste {
     my $self = shift;

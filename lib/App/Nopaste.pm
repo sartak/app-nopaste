@@ -47,6 +47,7 @@ sub nopaste {
         my @ret = eval {
             (my $file = "$service.pm") =~ s{::}{/}g;
             require $file;
+            next unless $service->available;
             $service->nopaste(%args);
         };
 
@@ -60,7 +61,7 @@ sub nopaste {
     }
     # }}}
 
-    return undef;
+    Carp::croak "No available App::Nopaste::Service modules found";
 }
 
 =head1 NAME
