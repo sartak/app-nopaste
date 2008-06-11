@@ -53,13 +53,18 @@ sub run {
     my $self = shift;
     my $text = $self->read_text;
 
-    my $url  = App::Nopaste->nopaste(
+    my %args = (
         text => $text,
         desc => $self->desc,
         nick => $self->nick,
         lang => $self->lang,
         chan => $self->chan,
     );
+
+    $args{error_handler} = $args{warn_handler} = sub { }
+        if $self->quiet;
+
+    my $url = App::Nopaste->nopaste(%args);
 
     if ($self->copy) {
         require Clipboard;
