@@ -111,6 +111,10 @@ L<App::Nopaste::Service::Foo> module and anyone can begin using it.
 
 =head1 INTERFACE
 
+=head2 CLI
+
+See the documentation in L<App::Nopaste::Command>.
+
 =head2 C<nopaste>
 
     use App::Nopaste 'nopaste';
