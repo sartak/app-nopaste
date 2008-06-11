@@ -30,7 +30,10 @@ sub get {
     my $self = shift;
     my $mech = shift;
 
-    $mech->get($self->uri);
+    my $res = $mech->get($self->uri);
+    die "Unable to fetch ".$self->uri.": " . $res->status_line
+        unless $res->is_success;
+    return $res;
 }
 
 sub fill_form {
