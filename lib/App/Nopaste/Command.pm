@@ -34,6 +34,13 @@ has chan => (
     cmd_aliases => ['channel'],
 );
 
+has services => (
+    traits      => ['Getopt'],
+    is          => 'rw',
+    isa         => 'ArrayRef[Str]',
+    cmd_aliases => ['service', 's'],
+);
+
 has copy => (
     traits      => ['Getopt'],
     is          => 'rw',
@@ -53,11 +60,12 @@ sub run {
     my $text = $self->read_text;
 
     my %args = (
-        text => $text,
-        desc => $self->desc,
-        nick => $self->nick,
-        lang => $self->lang,
-        chan => $self->chan,
+        text     => $text,
+        desc     => $self->desc,
+        nick     => $self->nick,
+        lang     => $self->lang,
+        chan     => $self->chan,
+        services => $self->services,
     );
 
     $args{error_handler} = $args{warn_handler} = sub { }
