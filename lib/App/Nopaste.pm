@@ -75,11 +75,11 @@ App::Nopaste - easy access to any pastebin
 
 =head1 VERSION
 
-Version 0.04 released 11 Jun 08
+Version 0.05 released ???
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 SYNOPSIS
 
