@@ -75,6 +75,7 @@ sub run {
 
     if ($self->copy) {
         require Clipboard;
+        Clipboard->import;
         Clipboard->copy($url);
     }
 
