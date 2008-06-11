@@ -6,30 +6,47 @@ with 'MooseX::Getopt';
 use App::Nopaste;
 
 has desc => (
-    is  => 'rw',
-    isa => 'Str',
+    traits      => ['Getopt'],
+    is          => 'rw',
+    isa         => 'Str',
+    cmd_aliases => ['description', 'd'],
 );
 
 has nick => (
-    is      => 'rw',
-    isa     => 'Str',
-    default => sub { $ENV{USER} },
+    traits      => ['Getopt'],
+    is          => 'rw',
+    isa         => 'Str',
+    default     => sub { $ENV{USER} },
+    cmd_aliases => ['nickname', 'name', 'n'],
 );
 
 has lang => (
-    is      => 'rw',
-    isa     => 'Str',
-    default => 'perl',
+    traits      => ['Getopt'],
+    is          => 'rw',
+    isa         => 'Str',
+    default     => 'perl',
+    cmd_aliases => ['language', 'l'],
 );
 
 has chan => (
-    is      => 'rw',
-    isa     => 'Str',
+    traits      => ['Getopt'],
+    is          => 'rw',
+    isa         => 'Str',
+    cmd_aliases => ['channel'],
 );
 
 has copy => (
-    is  => 'rw',
-    isa => 'Bool',
+    traits      => ['Getopt'],
+    is          => 'rw',
+    isa         => 'Bool',
+    cmd_aliases => ['x'],
+);
+
+has quiet => (
+    traits      => ['Getopt'],
+    is          => 'rw',
+    isa         => 'Bool',
+    cmd_aliases => ['q'],
 );
 
 sub run {
