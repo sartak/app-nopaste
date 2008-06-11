@@ -9,13 +9,11 @@ requires       'WWW::Mechanize';
 requires       'Module::Pluggable';
 
 features(
-    'nopaste to pastebin.com' => [
-        -default => 1,
-        recommends('WWW::Pastebin::PastebinCom::Create'),
+    'pastebin.com support' => [
+        'WWW::Pastebin::PastebinCom::Create',
     ],
-    'nopaste to rafb.net' => [
-        -default => 1,
-        recommends('WWW::Pastebin::RafbNet::Create'),
+    'rafb.net support' => [
+        'WWW::Pastebin::RafbNet::Create',
     ],
 );
 
