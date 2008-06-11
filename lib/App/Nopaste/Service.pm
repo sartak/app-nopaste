@@ -65,12 +65,14 @@ sub canonicalize_chan {
                 $mech->current_form->find_input('channel')->possible_values;
     my %is_valid = map { $_ => 1 } @chans;
 
+    return $chan if $is_valid{$chan};
+
     my $orig = $chan;
     $chan =~ s/^\#//;
-    return if $is_valid{$chan};
+    return $chan if $is_valid{$chan};
 
     $chan = "#$chan";
-    return if $is_valid{$chan};
+    return $chan if $is_valid{$chan};
 
     warn "Invalid channel '$orig'. Valid values are: " . join(', ', @chans);
     return $orig;
