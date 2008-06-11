@@ -8,3 +8,15 @@ if (my $url = App::Nopaste::Command->new_with_options->run) {
     print "\n";
 }
 
+__END__
+
+=head1 NAME
+
+nopaste - command-line utility to nopaste
+
+=head1 DESCRIPTION
+
+See the documentation of L<App::Nopaste::Command>.
+
+=cut
+
