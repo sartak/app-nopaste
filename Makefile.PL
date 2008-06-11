@@ -17,6 +17,9 @@ features(
     'rafb.net support' => [
         'WWW::Pastebin::RafbNet::Create',
     ],
+    'copying of URLs with -x/--copy' => [
+        'Clipboard',
+    ],
 );
 
 build_requires 'Test::More';
