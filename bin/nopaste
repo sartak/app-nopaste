@@ -1,12 +1,9 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-use App::Nopaste 'nopaste';
+use App::Nopaste::Command;
 
-my $text = do { local $/; <> };
-my $url = nopaste($text);
-
-if ($url) {
+if (my $url = App::Nopaste::Command->new_with_options->run) {
     print $url;
     print "\n";
 }
