@@ -45,6 +45,11 @@ sub nopaste {
             unless $service =~ /^App::Nopaste::Service/;
 
         my @ret = eval {
+
+            local $SIG{__WARN__} = sub {
+                $args{warn_handler}->($_[0], $service);
+            } if $args{warn_handler};
+
             (my $file = "$service.pm") =~ s{::}{/}g;
             require $file;
             next unless $service->available;
@@ -135,6 +140,11 @@ any errors that occur.
             warn "$service: $error";
         },
 
+        warn_handler => sub {
+            my ($warning, $service) = @_;
+            warn "$service: $warning";
+        },
+
         # you may specify the services to use - but you don't have to
         services => ["Rafb", "Husk"],
     );
@@ -145,6 +155,9 @@ The C<nopaste> function will return the URL of the paste on
 success, or C<undef> on failure.
 
 For each failure, the C<error_handler> argument is invoked with the error
+message and the service that issued it.
+
+For each warning, the C<warn_handler> argument is invoked with the warning
 message and the service that issued it.
 
 =head1 SEE ALSO
