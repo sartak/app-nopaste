@@ -38,8 +38,9 @@ sub fill_form {
     my $mech = shift;
     my %args = @_;
 
+    $mech->form_number(1);
+
     $mech->submit_form(
-        form_number   => 1,
         fields        => {
             paste => $args{text},
             do { $args{chan} ? (channel => $args{chan}) : () },
