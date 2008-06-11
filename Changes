@@ -1,6 +1,8 @@
 Revision history for App-Nopaste
 
 0.04
+        Add Mathbin courtesy of doy
+        Add an available method to services which checks Perl dependencies
 
 0.03    Tue May  6 04:31:08 2008
         App::Nopaste will now look at environment variables instead of nopaste
