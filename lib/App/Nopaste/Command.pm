@@ -34,7 +34,7 @@ has chan => (
     traits        => ['Getopt'],
     is            => 'rw',
     isa           => 'Str',
-    cmd_aliases   => ['channel'],
+    cmd_aliases   => ['channel', 'c'],
     documentation => "The channel for the nopaste, not always relevant. Usually tied to a pastebot in that channel which will announce your paste.",
 );
 
