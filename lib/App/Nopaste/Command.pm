@@ -16,7 +16,6 @@ has nick => (
     traits      => ['Getopt'],
     is          => 'rw',
     isa         => 'Str',
-    default     => sub { $ENV{USER} },
     cmd_aliases => ['nickname', 'name', 'n'],
 );
 

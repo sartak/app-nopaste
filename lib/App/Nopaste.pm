@@ -21,10 +21,10 @@ sub nopaste {
 
     $args{services} = defined($ENV{NOPASTE_SERVICES})
                    && [split ' ', $ENV{NOPASTE_SERVICES}]
-                        if !exists($args{services});
+                        if !defined($args{services});
 
     $args{nick} = $ENV{NOPASTE_NICK} || $ENV{USER}
-        if !exists($args{nick});
+        if !defined($args{nick});
 
 
     unless (ref($args{services}) eq 'ARRAY' && @{$args{services}}) {
