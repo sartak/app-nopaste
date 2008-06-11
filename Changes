@@ -1,6 +1,6 @@
 Revision history for App-Nopaste
 
-0.04
+0.04    Wed Jun 11 00:48:53 2008
         Add Mathbin courtesy of doy
         Add an "available" method to services which checks Perl dependencies
         Refactor the CLI into App::Nopaste::Command, using MooseX::Getopt:
