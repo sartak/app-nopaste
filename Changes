@@ -4,12 +4,14 @@ Revision history for App-Nopaste
         Add Mathbin courtesy of doy
         Add an available method to services which checks Perl dependencies
         Refactor the CLI into App::Nopaste::Command, using MooseX::Getopt:
-            Add -q/--quiet for silencing warnings.
-            Add -d/--desc for setting the one-line description.
+            Add -q/--quiet for silencing warnings
+            Add -d/--desc for setting the one-line description
             Add -n/--nick for setting the nickname to something other than $USER
             Add -l/--lang for setting the language to something other than Perl
             Add -c/--chan for setting the channel, so pastebots auto-announce
             Add -x/--copy for automatically copying the URL to your clipboard
+            Add -p/--paste for automatically taking the clipboard as input
+            Add -s/--services for setting the services to try
 
 0.03    Tue May  6 04:31:08 2008
         App::Nopaste will now look at environment variables instead of nopaste
