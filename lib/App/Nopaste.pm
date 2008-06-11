@@ -111,18 +111,6 @@ L<App::Nopaste::Service::Foo> module and anyone can begin using it.
 
 =head1 INTERFACE
 
-=head2 CLI
-
-The command line interface is a currently razor thin wrapper around
-C<App::Nopaste>.
-
-In the usual Perl manner, you can pass text in via STDIN or through named files
-as arguments. Multiple files will be concatenated into one paste (this may
-change in the future).
-
-It prints on STDOUT the paste URI - if one was available. It warns on STDERR
-any errors that occur.
-
 =head2 C<nopaste>
 
     use App::Nopaste 'nopaste';
