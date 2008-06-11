@@ -54,6 +54,14 @@ has copy => (
     documentation => "If specified, automatically copy the URL to your clipboard.",
 );
 
+has paste => (
+    traits        => ['Getopt'],
+    is            => 'rw',
+    isa           => 'Bool',
+    cmd_aliases   => ['p'],
+    documentation => "If specified, use only the clipboard as input.",
+);
+
 has quiet => (
     traits        => ['Getopt'],
     is            => 'rw',
@@ -91,6 +99,12 @@ sub run {
 
 sub read_text {
     my $self = shift;
+
+    if ($self->paste) {
+        require Clipboard;
+        Clipboard->import;
+        return Clipboard->paste;
+    }
 
     local @ARGV = @{ $self->extra_argv };
     local $/;
@@ -144,6 +158,10 @@ The nopaste services to try, in order. You may also specify this in C<$NOPASTE_S
 
 If specified, automatically copy the URL to your clipboard, using the
 L<Clipboard> module.
+
+=head2 -p, --paste
+
+If specified, use only the clipboard as input, using the L<Clipboard> module.
 
 =head2 -q, --quiet
 
