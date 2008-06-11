@@ -42,6 +42,7 @@ sub fill_form {
     my %args = @_;
 
     $mech->form_number(1);
+    $args{chan} = $self->canonicalize_chan($mech, $args{chan})
 
     $mech->submit_form(
         fields        => {
@@ -51,6 +52,28 @@ sub fill_form {
             do { $args{nick} ? (nick    => $args{nick}) : () },
         },
     );
+}
+
+sub canonicalize_chan {
+    my $self = shift;
+    my $mech = shift;
+    my $chan = shift;
+
+    return $chan if !$chan;
+
+    my @chans = grep { length }
+                $mech->current_form->find_input('channel')->possible_values;
+    my %is_valid = map { $_ => 1 } @chans;
+
+    my $orig = $chan;
+    $chan =~ s/^\#//;
+    return if $is_valid{$chan};
+
+    $chan = "#$chan";
+    return if $is_valid{$chan};
+
+    warn "Invalid channel '$orig'. Valid values are: " . join(', ', @chans);
+    return $orig;
 }
 
 sub return {
