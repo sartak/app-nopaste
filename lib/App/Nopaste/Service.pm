@@ -42,7 +42,7 @@ sub fill_form {
     my %args = @_;
 
     $mech->form_number(1);
-    $args{chan} = $self->canonicalize_chan($mech, $args{chan})
+    $args{chan} = $self->canonicalize_chan($mech, $args{chan});
 
     $mech->submit_form(
         fields        => {
