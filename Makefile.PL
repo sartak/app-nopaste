@@ -7,8 +7,8 @@ all_from       'lib/App/Nopaste.pm';
 
 requires       'WWW::Mechanize';
 requires       'Module::Pluggable';
-requires       'Moose';
-requires       'MooseX::Getopt';
+requires       'Moose' => '0.50';
+requires       'MooseX::Getopt' => '0.13';
 
 features(
     'pastebin.com support' => [
