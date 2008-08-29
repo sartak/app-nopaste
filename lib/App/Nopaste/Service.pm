@@ -4,7 +4,8 @@ use strict;
 use warnings;
 use WWW::Mechanize;
 
-sub available { 1 }
+sub available         { 1 }
+sub forbid_in_default { 0 }
 
 # this wrapper is so we can canonicalize arguments, especially "lang"
 sub nopaste {

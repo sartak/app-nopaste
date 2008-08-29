@@ -5,6 +5,7 @@ package App::Nopaste::Service::Mathbin;
 use base 'App::Nopaste::Service';
 
 sub uri { 'http://www.mathbin.net/' }
+sub forbid_in_default { 1 }
 
 sub fill_form {
     my $self = shift;

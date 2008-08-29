@@ -27,7 +27,9 @@ sub nopaste {
         if !defined($args{nick});
 
 
+    my $using_default = 0;
     unless (ref($args{services}) eq 'ARRAY' && @{$args{services}}) {
+        $using_default = 1;
         $args{services} = [ $self->plugins ];
     }
 
@@ -53,6 +55,7 @@ sub nopaste {
             (my $file = "$service.pm") =~ s{::}{/}g;
             require $file;
             next unless $service->available;
+            next if $using_default && $service->forbid_in_default;
             $service->nopaste(%args);
         };
 
