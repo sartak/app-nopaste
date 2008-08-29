@@ -76,10 +76,6 @@ sub nopaste {
 
 App::Nopaste - easy access to any pastebin
 
-=head1 VERSION
-
-Version 0.05 released ???
-
 =cut
 
 our $VERSION = '0.05';

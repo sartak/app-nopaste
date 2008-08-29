@@ -1,6 +1,8 @@
 Revision history for App-Nopaste
 
 0.05
+        Allow specific pastebins to say "I don't want to be picked by default"
+            Apply this to Mathbin
 
 0.04    Wed Jun 11 00:48:53 2008
         Add Mathbin courtesy of doy
