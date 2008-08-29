@@ -7,6 +7,8 @@ use Module::Pluggable search_path => 'App::Nopaste::Service';
 use base 'Exporter';
 our @EXPORT_OK = 'nopaste';
 
+our $VERSION = '0.05';
+
 sub nopaste {
     # process arguments {{{
     # allow "nopaste($text)"
@@ -72,13 +74,13 @@ sub nopaste {
     Carp::croak "No available App::Nopaste::Service modules found";
 }
 
+1;
+
+__END__
+
 =head1 NAME
 
 App::Nopaste - easy access to any pastebin
-
-=cut
-
-our $VERSION = '0.05';
 
 =head1 SYNOPSIS
 
@@ -173,6 +175,4 @@ This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 =cut
-
-1;
 
