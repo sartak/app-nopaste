@@ -48,6 +48,7 @@ sub nopaste {
         $service = "App::Nopaste::Service::$service"
             unless $service =~ /^App::Nopaste::Service/;
 
+        no warnings 'exiting';
         my @ret = eval {
 
             local $SIG{__WARN__} = sub {
