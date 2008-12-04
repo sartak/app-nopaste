@@ -1,6 +1,7 @@
 Revision history for App-Nopaste
 
-0.06
+0.06    Wed Dec  3 21:50:36 2008
+        Silence the "exiting eval via next" warning
 
 0.05    Fri Aug 29 15:03:10 2008
         Allow specific pastebins to say "I don't want to be picked by default"
