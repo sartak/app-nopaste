@@ -1,5 +1,7 @@
 Revision history for App-Nopaste
 
+0.07
+
 0.06    Wed Dec  3 21:50:36 2008
         Silence the "exiting eval via next" warning
 
