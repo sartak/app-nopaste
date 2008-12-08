@@ -13,10 +13,12 @@ sub fill_form {
     $mech->form_number(2); # first is search
 
     $mech->submit_form(
-        fields        => {
+        fields => {
             "paste[body]"          => $args{text},
-            "paste[parser_id]"     => $args{lang},
             "paste[authorization]" => 'burger', # set with JS to avoid bots
+
+            # this doesn't work because they use numeric IDs for language
+            #"paste[parser_id]"     => $args{lang},
         },
     );
 }
