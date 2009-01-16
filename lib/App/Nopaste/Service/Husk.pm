@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package App::Nopaste::Service::Husk;
 use strict;
 use warnings;

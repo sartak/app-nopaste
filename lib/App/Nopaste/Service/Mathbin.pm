@@ -1,7 +1,6 @@
-#!/usr/bin/perl
+package App::Nopaste::Service::Mathbin;
 use strict;
 use warnings;
-package App::Nopaste::Service::Mathbin;
 use base 'App::Nopaste::Service';
 
 sub uri { 'http://www.mathbin.net/' }

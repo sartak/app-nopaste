@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package App::Nopaste::Command;
 use Moose;
 with 'MooseX::Getopt';

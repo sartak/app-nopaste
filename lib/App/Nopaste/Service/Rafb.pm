@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package App::Nopaste::Service::Rafb;
 use strict;
 use warnings;

@@ -1,4 +1,3 @@
-#!perl
 package App::Nopaste;
 use strict;
 use warnings;

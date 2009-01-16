@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package App::Nopaste::Service::Shadowcat;
 use strict;
 use warnings;

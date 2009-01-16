@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package App::Nopaste::Service::PastebinCom;
 use strict;
 use warnings;

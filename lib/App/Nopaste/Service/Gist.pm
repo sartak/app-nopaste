@@ -1,8 +1,7 @@
-#!/usr/bin/env perl
 package App::Nopaste::Service::Gist;
 use strict;
 use warnings;
-use WWW::Mechanize;
+use base 'App::Nopaste::Service';
 
 sub available         { 1 }
 sub forbid_in_default { 0 }

@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package App::Nopaste::Service;
 use strict;
 use warnings;
