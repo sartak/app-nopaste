@@ -15,27 +15,61 @@ sub run {
     my ($self, %arg) = @_;
     my $mech = WWW::Mechanize->new;
 
+    my %auth = $self->_get_auth;
+
     $mech->get('http://gist.github.com');
     $mech->submit_form(
         form_number => 1,
         fields      => {
             'file_name[gistfile1]'     => 'paste.' . ($arg{lang} || 'txt'),
             'file_contents[gistfile1]' => $arg{text},
+            %auth,
         },
     );
 
     return $self->return($mech => @_);
 }
 
+sub _get_auth {
+  my ($self) = @_;
+
+  if (eval "require Git; 1") {
+      my $login = Git::config('github.login');
+      my $token = Git::config('github.token');
+
+      return unless $login and $token;
+
+      return (
+          login => $login,
+          token => $token,
+      );
+  } elsif (eval "require Config::INI::Reader; 1") {
+      require File::Spec;
+      return unless $ENV{HOME};
+      my $git_config_filename = File::Spec->catfile($ENV{HOME}, '.gitconfig');
+      return unless -r $git_config_filename;
+      my $gitconfig = Config::INI::Reader->read_file($git_config_filename);
+      my $login = $gitconfig->{github}{login};
+      my $token = $gitconfig->{github}{token};
+
+      return unless $login and $token;
+
+      return (
+        login => $login,
+        token => $token,
+      );
+  }
+
+  return;
+}
+
 sub return {
     my $self = shift;
     my $mech = shift;
 
-    my $link = $mech->find_link(url_regex => qr{/delete/\d+})
-        || die $mech->content;
-    my ($id) = $link->url =~ m{/delete/(\d+)};
+    my ($id) = $mech->content =~ m{gist: (\d+)\s*-};
 
-    return (0, "Could not find paste link.") if !$link;
+    return (0, "Could not find paste link.") if !$id;
     return (1, "http://gist.github.com/$id");
 }
 
