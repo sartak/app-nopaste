@@ -34,3 +34,9 @@ sub return {
 
 1;
 
+=head1 NAME
+
+App::Nopaste::Service::Pastie - http://pastie.org
+
+=cut
+
