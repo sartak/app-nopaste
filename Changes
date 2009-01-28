@@ -1,6 +1,7 @@
 Revision history for App-Nopaste
 
-0.10
+0.10    Wed Jan 28 18:48:55 2009
+        I was a little too aggressive in my s/user/login/ (Sartak)
 
 0.09    Wed Jan 28 18:34:31 2009
         The parameter for gist is "user" not "login" (Ricardo SIGNES)

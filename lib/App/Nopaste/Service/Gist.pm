@@ -40,7 +40,7 @@ sub _get_auth {
       return unless $user and $token;
 
       return (
-          user  => $user,
+          login => $user,
           token => $token,
       );
   } elsif (eval "require Config::INI::Reader; 1") {
@@ -55,7 +55,7 @@ sub _get_auth {
       return unless $user and $token;
 
       return (
-        user  => $user,
+        login => $user,
         token => $token,
       );
   }
