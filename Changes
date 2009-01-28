@@ -1,6 +1,7 @@
 Revision history for App-Nopaste
 
-0.09
+0.09    Wed Jan 28 18:34:31 2009
+        The parameter for gist is "user" not "login" (Ricardo SIGNES)
 
 0.08    Thu Jan 22 21:44:51 2009
         Optional authentication for Gist, by Ricardo SIGNES.

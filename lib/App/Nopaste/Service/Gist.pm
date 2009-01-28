@@ -34,13 +34,13 @@ sub _get_auth {
   my ($self) = @_;
 
   if (eval "require Git; 1") {
-      my $login = Git::config('github.login');
+      my $user  = Git::config('github.user');
       my $token = Git::config('github.token');
 
-      return unless $login and $token;
+      return unless $user and $token;
 
       return (
-          login => $login,
+          user  => $user,
           token => $token,
       );
   } elsif (eval "require Config::INI::Reader; 1") {
@@ -49,13 +49,13 @@ sub _get_auth {
       my $git_config_filename = File::Spec->catfile($ENV{HOME}, '.gitconfig');
       return unless -r $git_config_filename;
       my $gitconfig = Config::INI::Reader->read_file($git_config_filename);
-      my $login = $gitconfig->{github}{login};
+      my $user  = $gitconfig->{github}{user};
       my $token = $gitconfig->{github}{token};
 
-      return unless $login and $token;
+      return unless $user and $token;
 
       return (
-        login => $login,
+        user  => $user,
         token => $token,
       );
   }
