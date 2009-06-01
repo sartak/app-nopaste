@@ -21,7 +21,7 @@ sub run {
     $mech->submit_form(
         form_number => 1,
         fields      => {
-            'file_name[gistfile1]'     => 'paste.' . ($arg{lang} || 'txt'),
+            'file_ext[gistfile1]'      => '.' . ( $arg{lang} || 'txt' ),
             'file_contents[gistfile1]' => $arg{text},
             %auth,
         },
