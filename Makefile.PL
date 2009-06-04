@@ -31,6 +31,8 @@ build_requires 'Test::More';
 
 install_script 'bin/nopaste';
 
+githubmeta;
+
 auto_install;
 WriteAll;
 
