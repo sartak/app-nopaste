@@ -4,7 +4,7 @@ use inc::Module::Install;
 # Define metadata
 name           'App-Nopaste';
 all_from       'lib/App/Nopaste.pm';
-repository     'http://github.com/sartak/app-nopaste';
+githubmeta;
 
 requires       'WWW::Mechanize';
 requires       'Module::Pluggable';
@@ -30,8 +30,6 @@ features(
 build_requires 'Test::More';
 
 install_script 'bin/nopaste';
-
-githubmeta;
 
 auto_install;
 WriteAll;
