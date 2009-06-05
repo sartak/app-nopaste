@@ -161,12 +161,6 @@ L<WebService::NoPaste>, L<WWW::PastebinCom::Create>, L<WWW::Rafb::Create>, L<Dev
 
 Shawn M Moore, C<< <sartak at gmail.com> >>
 
-=head1 BUGS
-
-Please report any bugs through RT: email
-C<bug-app-nopaste at rt.cpan.org>, or browse
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=App-Nopaste>.
-
 =head1 COPYRIGHT AND LICENSE
 
 Copyright 2008-2009 Shawn M Moore.
