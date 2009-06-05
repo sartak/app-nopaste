@@ -159,7 +159,7 @@ L<WebService::NoPaste>, L<WWW::PastebinCom::Create>, L<WWW::Rafb::Create>, L<Dev
 
 =head1 AUTHOR
 
-Shawn M Moore, C<< <sartak at gmail.com> >>
+Shawn M Moore, C<sartak@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
