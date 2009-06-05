@@ -31,36 +31,36 @@ sub run {
 }
 
 sub _get_auth {
-  my ($self) = @_;
+    my ($self) = @_;
 
-  if (eval "require Git; 1") {
-      my $user  = Git::config('github.user');
-      my $token = Git::config('github.token');
+    if (eval "require Git; 1") {
+        my $user  = Git::config('github.user');
+        my $token = Git::config('github.token');
 
-      return unless $user and $token;
+        return unless $user and $token;
 
-      return (
-          login => $user,
-          token => $token,
-      );
-  } elsif (eval "require Config::INI::Reader; 1") {
-      require File::Spec;
-      return unless $ENV{HOME};
-      my $git_config_filename = File::Spec->catfile($ENV{HOME}, '.gitconfig');
-      return unless -r $git_config_filename;
-      my $gitconfig = Config::INI::Reader->read_file($git_config_filename);
-      my $user  = $gitconfig->{github}{user};
-      my $token = $gitconfig->{github}{token};
+        return (
+            login => $user,
+            token => $token,
+        );
+    } elsif (eval "require Config::INI::Reader; 1") {
+        require File::Spec;
+        return unless $ENV{HOME};
+        my $git_config_filename = File::Spec->catfile($ENV{HOME}, '.gitconfig');
+        return unless -r $git_config_filename;
+        my $gitconfig = Config::INI::Reader->read_file($git_config_filename);
+        my $user  = $gitconfig->{github}{user};
+        my $token = $gitconfig->{github}{token};
 
-      return unless $user and $token;
+        return unless $user and $token;
 
-      return (
-        login => $user,
-        token => $token,
-      );
-  }
+        return (
+            login => $user,
+            token => $token,
+        );
+    }
 
-  return;
+    return;
 }
 
 sub return {
