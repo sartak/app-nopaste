@@ -8,7 +8,7 @@ githubmeta;
 
 requires       'WWW::Mechanize';
 requires       'Module::Pluggable';
-requires       'Moose' => '0.50';
+requires       'Moose' => '0.74';
 requires       'MooseX::Getopt' => '0.17';
 
 features(
