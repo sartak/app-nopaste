@@ -1,6 +1,11 @@
 Revision history for App-Nopaste
 
-0.11
+0.11    Thu Jun 18 17:20:51 2009
+        Service::Gist: use file_ext instead of file_name (nothingmuch)
+
+        Bump Moose dependencies to avoid deprecation warnings
+
+        Doc typo fix (rafl)
 
 0.10    Wed Jan 28 18:48:55 2009
         I was a little too aggressive in my s/user/login/ (Sartak)
