@@ -21,8 +21,7 @@ features(
     'copying of URLs with -x/--copy' => [
         'Clipboard',
     ],
-    'Github authentication (either module works)' => [
-        'Git' => '0.00',
+    'Github authentication (having Git installed works too)' => [
         'Config::INI::Reader' => '0.00',
     ],
 );
