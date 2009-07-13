@@ -1,5 +1,7 @@
 Revision history for App-Nopaste
 
+0.13
+
 0.12    Mon Jul 13 19:35:10 2009
         Don't explicitly (optionally) depend on Git, but use it if
             we have it (Sartak)
