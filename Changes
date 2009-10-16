@@ -1,6 +1,8 @@
 Revision history for App-Nopaste
 
-0.16
+0.16    Fri Oct 16 14:32:09 2009
+        Fix Gist support (ckuskie@sterling.net) [rt.cpan.org #50500]
+        Add --lang support to Debian (gregoa@debian.org) [rt.cpan.org #47911]
 
 0.15    Wed Jul 15 05:01:36 2009
         MANIFEST is really hard! :(
