@@ -19,7 +19,7 @@ sub run {
 
     $mech->get('http://gist.github.com');
     $mech->submit_form(
-        form_number => 1,
+        form_number => 2,
         fields      => {
             'file_ext[gistfile1]'      => '.' . ( $arg{lang} || 'txt' ),
             'file_contents[gistfile1]' => $arg{text},
