@@ -1,6 +1,7 @@
 Revision history for App-Nopaste
 
 0.17
+        fix Gist support harder by using the API rather than scraping (rjbs)
 
 0.16    Fri Oct 16 14:32:09 2009
         Fix Gist support (ckuskie@sterling.net) [rt.cpan.org #50500]
