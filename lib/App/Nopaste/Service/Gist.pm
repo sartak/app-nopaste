@@ -13,21 +13,20 @@ sub nopaste {
 
 sub run {
     my ($self, %arg) = @_;
-    my $mech = WWW::Mechanize->new;
+    my $ua = LWP::UserAgent->new;
 
     my %auth = $self->_get_auth;
 
-    $mech->get('http://gist.github.com');
-    $mech->submit_form(
-        form_number => 2,
-        fields      => {
-            'file_ext[gistfile1]'      => '.' . ( $arg{lang} || 'txt' ),
-            'file_contents[gistfile1]' => $arg{text},
-            %auth,
-        },
+    my $res = $ua->post(
+      'http://gist.github.com/api/v1/json/new',
+      {
+        'file_ext[gistfile1]'      => '.' . ( $arg{lang} || 'txt' ),
+        'file_contents[gistfile1]' => $arg{text},
+        %auth,
+      },
     );
 
-    return $self->return($mech => @_);
+    return $self->return($res);
 }
 
 sub _get_auth {
@@ -64,10 +63,9 @@ sub _get_auth {
 }
 
 sub return {
-    my $self = shift;
-    my $mech = shift;
+    my ($self, $res) = @_;
 
-    my ($id) = $mech->content =~ m{gist: (\d+)\s*-};
+    my ($id) = $res->content =~ qr{"repo":"([0-9a-f]+)"};
 
     return (0, "Could not find paste link.") if !$id;
     return (1, "http://gist.github.com/$id");
