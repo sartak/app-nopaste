@@ -24,6 +24,10 @@ features(
     'Github authentication (having Git installed works too)' => [
         'Config::INI::Reader' => '0.00',
     ],
+    'copy files to remote server with scp' => [
+        'File::Temp',
+        'File::Spec'
+    ],
 );
 
 install_script 'bin/nopaste';
