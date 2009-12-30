@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.18    Wed Dec 30 16:04:45 2009
+        Add ssh support (obra, jibsheet)
+
 0.17    Mon Nov  2 13:20:24 2009
         fix Gist support harder by using the API rather than scraping (rjbs)
         Improve --lang support for Debian (gregoa@debian.org) [rt.cpan.org #47911]
