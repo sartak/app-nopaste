@@ -19,7 +19,7 @@ sub run {
     print $tmp $args{text} || return (0, "Can't write to tempfile $filename");
     close $tmp || return (0, "Can't write to tempfile $filename");
 
-    `scp $filename $server:$docroot`;
+    system('scp', '-q', $filename, "$server:$docroot");
 
     my ($volume, $dir, $file) = File::Spec->splitpath($filename);
     return (1, "$topurl/$file");
