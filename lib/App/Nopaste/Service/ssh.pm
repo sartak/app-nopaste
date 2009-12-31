@@ -30,11 +30,30 @@ sub run {
 
 =head1 NAME
 
-App::Nopaste::Service::ssh
+App::Nopaste::Service::ssh - copies files to your server using scp
 
 =head1 AUTHOR
 
 Kevin Falcone << <falcone@cpan.org> >>
+
+=head1 ENVIRONMENT VARIABLES
+
+=over 4
+
+=item NOPASTE_SSH_SERVER
+
+The hostname to which you ssh. The left-hand side of the colon in the scp.
+Something like C<sartak.org>.
+
+=item NOPASTE_SSH_DOCROOT
+
+The path on disk for your pastes. Something like C<public_html/paste>
+
+=item NOPASTE_SSH_WEBPATH
+
+The path for URLs. Something like C<http://sartak.org/paste>
+
+=back
 
 =cut
 
