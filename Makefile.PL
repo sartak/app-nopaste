@@ -15,9 +15,6 @@ features(
     'pastebin.com support' => [
         'WWW::Pastebin::PastebinCom::Create',
     ],
-    'rafb.net support' => [
-        'WWW::Pastebin::RafbNet::Create',
-    ],
     'copying of URLs with -x/--copy' => [
         'Clipboard',
     ],

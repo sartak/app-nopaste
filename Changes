@@ -1,5 +1,9 @@
 Revision history for App-Nopaste
 
+0.19    Sun Feb 21 15:39:27 2009
+        Remove rafb.net support since it's been shut down
+            - See also http://rafb.net/paste/
+
 0.18    Wed Dec 30 16:04:45 2009
         Add ssh support (obra, jibsheet)
 
