@@ -10,8 +10,6 @@ sub fill_form {
     my $mech = shift;
     my %args = @_;
 
-    $mech->form_number(2); # first is search
-
     $mech->submit_form(
         fields => {
             "paste[body]"          => $args{text},
