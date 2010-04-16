@@ -36,5 +36,9 @@ sub return {
 
 App::Nopaste::Service::Codepeek - http://codepeek.com
 
+=head1 AUTHOR
+
+Justin Hunter, C<< <justin.d.hunter@gmail.com> >>
+
 =cut
 
