@@ -1,10 +1,11 @@
 Revision history for App-Nopaste
 
-0.20
+0.20    Fri Apr 16 23:05:10 2010
         App::Nopaste::Service::Pastie would generate warnings via
-        Mechanize due to changes in http://pastie.org HTML (avar)
+            Mechanize due to changes in http://pastie.org HTML (avar)
+        Add App::Nopaste::Service::Codepeek (arcanez)
 
-0.19    Sun Feb 21 15:39:27 2009
+0.19    Sun Feb 21 15:39:27 2010
         Remove rafb.net support since it's been shut down
             - See also http://rafb.net/paste/
 
