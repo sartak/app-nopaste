@@ -137,7 +137,7 @@ characters of your text.
 
 =head2 -n, --name
 
-Your nickname, usually displayed with the paste. Default: C<$NOPASTE_USER> then
+Your nickname, usually displayed with the paste. Default: C<$NOPASTE_NICK> then
 C<$USER>.
 
 =head2 -l, --lang
