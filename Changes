@@ -3,6 +3,7 @@ Revision history for App-Nopaste
 0.21
         Doc fix (Salvatore Bonaccorso) [rt.cpan.org #53249]
         Doc fix (Fabien Wernli) [rt.cpan.org #54928]
+        Mention 'nopaste' script (Damyan Ivanov) [rt.cpan.org #51065]
 
 0.20    Fri Apr 16 23:05:10 2010
         App::Nopaste::Service::Pastie would generate warnings via

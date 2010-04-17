@@ -121,6 +121,8 @@ __END__
 
 App::Nopaste::Command - command-line utility for L<App::Nopaste>
 
+nopaste - command-line utility to nopaste
+
 =head1 DESCRIPTION
 
 This application will take some text on STDIN and give you a URL on STDOUT.
