@@ -30,7 +30,7 @@ sub run {
 
 =head1 NAME
 
-App::Nopaste::Service::ssh - copies files to your server using scp
+App::Nopaste::Service::SSH - copies files to your server using scp
 
 =head1 AUTHOR
 

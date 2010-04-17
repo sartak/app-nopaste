@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.21
+        Doc fix (Salvatore Bonaccorso) [rt.cpan.org #53249]
+
 0.20    Fri Apr 16 23:05:10 2010
         App::Nopaste::Service::Pastie would generate warnings via
             Mechanize due to changes in http://pastie.org HTML (avar)
