@@ -1,6 +1,7 @@
 package App::Nopaste;
 use strict;
 use warnings;
+use 5.008003;
 use Module::Pluggable search_path => 'App::Nopaste::Service';
 
 use base 'Exporter';
