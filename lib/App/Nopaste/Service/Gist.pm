@@ -23,6 +23,7 @@ sub run {
         'file_ext[gistfile1]'      => '.' . ( $arg{lang} || 'txt' ),
         'file_contents[gistfile1]' => $arg{text},
         %auth,
+        defined $arg{private} ?  (private => 1) : (),
       },
     );
 

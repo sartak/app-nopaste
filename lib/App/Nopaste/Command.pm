@@ -69,6 +69,13 @@ has quiet => (
     documentation => "If specified, do not warn or complain about broken services.",
 );
 
+has private => (
+    traits        => ['Getopt'],
+    is            => 'rw',
+    isa           => 'Bool',
+    documentation => "If specified, paste privately to services where possible.",
+);
+
 sub run {
     my $self = shift;
     my $text = $self->read_text;
@@ -80,6 +87,7 @@ sub run {
         lang     => $self->lang,
         chan     => $self->chan,
         services => $self->services,
+        private  => $self->private,
     );
 
     $args{error_handler} = $args{warn_handler} = sub { }
