@@ -88,11 +88,11 @@ sub run {
     my $self = shift;
 
     if ($self->list_services) {
-      my @plugins=sort App::Nopaste->plugins;
-      grep { s/App::Nopaste::Service::(\w+)$/$1/; } @plugins;
-      print "\nAvailable nopaste services:\n\n";
-      print join("\n", @plugins), "\n\n";
-      exit 0;
+        for (sort App::Nopaste->plugins) {
+            s/App::Nopaste::Service::(\w+)$/$1/;
+            print $_, "\n";
+        }
+        exit 0;
     }
 
     my $text = $self->read_text;
