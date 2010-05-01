@@ -1,6 +1,8 @@
 Revision history for App-Nopaste
 
-0.21
+0.21    Sat May  1 09:32:10 2010
+        Add a --list_services/-L option (David Bremner) [rt.cpan.org #55562]
+        Add --private support, used in Gist (John Goulah)
         Doc fix (Salvatore Bonaccorso) [rt.cpan.org #53249]
         Doc fix (Fabien Wernli) [rt.cpan.org #54928]
         Mention 'nopaste' script (Damyan Ivanov) [rt.cpan.org #51065]
