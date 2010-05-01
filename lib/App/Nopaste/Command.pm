@@ -45,6 +45,14 @@ has services => (
     documentation => "The nopaste services to try, in order. You may also specify this in the env var NOPASTE_SERVICES.",
 );
 
+has list_services => (
+    traits        => ['Getopt'],
+    is            => 'rw',
+    isa           => 'Bool',
+    cmd_aliases   => ['list', 'L'],
+    documentation => "List available nopaste services",
+);
+
 has copy => (
     traits        => ['Getopt'],
     is            => 'rw',
@@ -78,6 +86,15 @@ has private => (
 
 sub run {
     my $self = shift;
+
+    if ($self->list_services) {
+      my @plugins=sort App::Nopaste->plugins;
+      grep { s/App::Nopaste::Service::(\w+)$/$1/; } @plugins;
+      print "\nAvailable nopaste services:\n\n";
+      print join("\n", @plugins), "\n\n";
+      exit 0;
+    }
+
     my $text = $self->read_text;
 
     my %args = (
