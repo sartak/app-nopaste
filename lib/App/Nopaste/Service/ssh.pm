@@ -12,12 +12,16 @@ sub run {
     my $server = $ENV{NOPASTE_SSH_SERVER} || return (0,"No NOPASTE_SSH_SERVER set");
     my $docroot = $ENV{NOPASTE_SSH_DOCROOT} || return (0, "No NOPASTE_SSH_DOCROOT set");
     my $topurl = $ENV{NOPASTE_SSH_WEBPATH} || "http://$server";
+    my $mode = $ENV{NOPASTE_SSH_MODE} || undef;
 
     my $date = strftime("%Y-%m-%d",localtime());
     my $tmp = File::Temp->new( TEMPLATE => "${date}XXXXXXXX", CLEANUP => 1 );
     my $filename = $tmp->filename;
     print $tmp $args{text} || return (0, "Can't write to tempfile $filename");
     close $tmp || return (0, "Can't write to tempfile $filename");
+
+    chmod oct($mode), $filename
+        if defined $mode;
 
     system('scp', '-q', $filename, "$server:$docroot");
 
@@ -52,6 +56,11 @@ The path on disk for your pastes. Something like C<public_html/paste>
 =item NOPASTE_SSH_WEBPATH
 
 The path for URLs. Something like C<http://sartak.org/paste>
+
+=item NOPASTE_SSH_MODE
+
+Octal permissions mode to set for the temporary file before uploading.
+Something like C<0644>. 
 
 =back
 
