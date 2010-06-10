@@ -34,7 +34,7 @@ sub run {
 
 =head1 NAME
 
-App::Nopaste::Service::SSH - copies files to your server using scp
+App::Nopaste::Service::ssh - copies files to your server using scp
 
 =head1 AUTHOR
 
@@ -51,11 +51,11 @@ Something like C<sartak.org>.
 
 =item NOPASTE_SSH_DOCROOT
 
-The path on disk for your pastes. Something like C<public_html/paste>
+The path on disk for your pastes. Something like C<public_html/paste>.
 
 =item NOPASTE_SSH_WEBPATH
 
-The path for URLs. Something like C<http://sartak.org/paste>
+The path for URLs. Something like C<http://sartak.org/paste>.
 
 =item NOPASTE_SSH_MODE
 
