@@ -1,5 +1,9 @@
 Revision history for App-Nopaste
 
+0.22    Thu Jun 10 12:58:99 2010
+        Add NOPASTE_SSH_MODE for chmod'ing after uploading (Thomas Sibley)
+        Doc fixes (Thomas Sibley)
+
 0.21    Sat May  1 09:32:10 2010
         Add a --list_services/-L option (David Bremner) [rt.cpan.org #55562]
         Add --private support, used in Gist (John Goulah)
