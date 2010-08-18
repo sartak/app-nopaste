@@ -43,14 +43,11 @@ sub _get_auth {
             login => $user,
             token => $token,
         );
-    } elsif (eval "require Config::INI::Reader; 1") {
-        require File::Spec;
-        return unless $ENV{HOME};
-        my $git_config_filename = File::Spec->catfile($ENV{HOME}, '.gitconfig');
-        return unless -r $git_config_filename;
-        my $gitconfig = Config::INI::Reader->read_file($git_config_filename);
-        my $user  = $gitconfig->{github}{user};
-        my $token = $gitconfig->{github}{token};
+    } elsif (eval "require Config::GitLike; 1") {
+        my $gitconfig = Config::GitLike->new( confname => 'gitconfig' );
+        $gitconfig->load;
+        my $user  = $gitconfig->get( key => 'github.user' );
+        my $token = $gitconfig->get( key => 'github.token' );
 
         return unless $user and $token;
 
