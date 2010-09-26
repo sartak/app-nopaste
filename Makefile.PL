@@ -25,6 +25,9 @@ features(
         'File::Temp',
         'File::Spec'
     ],
+    'sprunge.us support' => [
+        'WWW::Pastebin::Sprunge::Create',
+    ],
 );
 
 install_script 'bin/nopaste';
