@@ -140,7 +140,7 @@ See the documentation in L<App::Nopaste::Command>.
         },
 
         # you may specify the services to use - but you don't have to
-        services => ["Rafb", "Husk"],
+        services => ["Shadowcat", "Husk"],
     );
 
     print $url if $url;
@@ -156,7 +156,7 @@ message and the service that issued it.
 
 =head1 SEE ALSO
 
-L<WebService::NoPaste>, L<WWW::PastebinCom::Create>, L<WWW::Rafb::Create>, L<Devel::REPL::Plugin::Nopaste>
+L<WebService::NoPaste>, L<WWW::Pastebin::PastebinCom::Create>, L<Devel::REPL::Plugin::Nopaste>
 
 =head1 AUTHOR
 
