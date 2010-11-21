@@ -16,7 +16,7 @@ sub run {
 
     my $date = strftime("%Y-%m-%d",localtime());
     my ($ext) = defined $args{'filename'} && $args{'filename'} =~ /(\.[^.]+?)$/ ? $1 : '';
-    my $tmp = File::Temp->new( TEMPLATE => "${date}XXXXXXXX", SUFFIX => $ext, CLEANUP => 1 );
+    my $tmp = File::Temp->new( TEMPLATE => "${date}XXXXXXXX", SUFFIX => $ext, UNLINK => 1 );
     my $filename = $tmp->filename;
     print $tmp $args{text} || return (0, "Can't write to tempfile $filename");
     close $tmp || return (0, "Can't write to tempfile $filename");
