@@ -99,6 +99,7 @@ sub run {
 
     my %args = (
         text     => $text,
+        filename => $self->detect_filename,
         desc     => $self->desc,
         nick     => $self->nick,
         lang     => $self->lang,
@@ -133,6 +134,15 @@ sub read_text {
     local @ARGV = @{ $self->extra_argv };
     local $/;
     return <>;
+}
+
+sub detect_filename {
+    my $self  = shift;
+    my @files = @{ $self->extra_argv };
+
+    return undef unless @files;
+    return undef if $self->paste or $files[0] eq '-';
+    return $files[0];
 }
 
 __PACKAGE__->meta->make_immutable;
