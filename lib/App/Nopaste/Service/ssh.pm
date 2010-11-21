@@ -15,7 +15,8 @@ sub run {
     my $mode = $ENV{NOPASTE_SSH_MODE} || undef;
 
     my $date = strftime("%Y-%m-%d",localtime());
-    my $tmp = File::Temp->new( TEMPLATE => "${date}XXXXXXXX", CLEANUP => 1 );
+    my ($ext) = defined $args{'filename'} && $args{'filename'} =~ /(\.[^.]+?)$/ ? $1 : '';
+    my $tmp = File::Temp->new( TEMPLATE => "${date}XXXXXXXX", SUFFIX => $ext, CLEANUP => 1 );
     my $filename = $tmp->filename;
     print $tmp $args{text} || return (0, "Can't write to tempfile $filename");
     close $tmp || return (0, "Can't write to tempfile $filename");
