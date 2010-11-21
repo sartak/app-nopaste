@@ -23,7 +23,7 @@ sub run {
     chmod oct($mode), $filename
         if defined $mode;
 
-    system('scp', '-q', $filename, "$server:$docroot");
+    system('scp', '-pq', $filename, "$server:$docroot");
 
     my ($volume, $dir, $file) = File::Spec->splitpath($filename);
     return (1, "$topurl/$file");
