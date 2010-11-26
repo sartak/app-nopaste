@@ -7,7 +7,6 @@ use_ok 'App::Nopaste::Service';
 use_ok 'App::Nopaste::Service::Codepeek';
 use_ok 'App::Nopaste::Service::Debian';
 use_ok 'App::Nopaste::Service::Gist';
-use_ok 'App::Nopaste::Service::Husk';
 use_ok 'App::Nopaste::Service::Mathbin';
 use_ok 'App::Nopaste::Service::PastebinCom';
 use_ok 'App::Nopaste::Service::Pastie';

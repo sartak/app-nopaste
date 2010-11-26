@@ -188,7 +188,7 @@ The channel for the nopaste, not always relevant. Usually tied to a pastebot in 
 
 =head2 -s, --services
 
-The nopaste services to try, in order. You may also specify this in C<$NOPASTE_SERVICES> (space-separated list of service names, e.g. C<Husk Shadowcat>).
+The nopaste services to try, in order. You may also specify this in C<$NOPASTE_SERVICES> (space-separated list of service names, e.g. C<Shadowcat Gist>).
 
 =head2 -x, --copy
 

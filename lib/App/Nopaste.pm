@@ -140,7 +140,7 @@ See the documentation in L<App::Nopaste::Command>.
         },
 
         # you may specify the services to use - but you don't have to
-        services => ["Shadowcat", "Husk"],
+        services => ["Shadowcat", "Gist"],
     );
 
     print $url if $url;
