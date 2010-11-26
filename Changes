@@ -2,7 +2,7 @@ Revision history for App-Nopaste
 
 0.22    Thu Jun 10 12:58:99 2010
         Add NOPASTE_SSH_MODE for chmod'ing after uploading (Thomas Sibley)
-        Preserve the source file's name and extension for ssh (Thomas Sibley)
+        Preserve the source file's extension for ssh (Thomas Sibley)
         Use Config::GitLike instead of Config::INI::Reader (Thomas Sibley)
         Doc fixes (Thomas Sibley, Justin Hunter)
         Code style fixes (Shawn M Moore)
