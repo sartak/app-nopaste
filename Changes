@@ -1,13 +1,15 @@
 Revision history for App-Nopaste
 
-0.22    Thu Jun 10 12:58:99 2010
-        Add NOPASTE_SSH_MODE for chmod'ing after uploading (Thomas Sibley)
+0.23    Fri Nov 26 2010
         Preserve the source file's extension for ssh (Thomas Sibley)
         Use Config::GitLike instead of Config::INI::Reader (Thomas Sibley)
         Doc fixes (Thomas Sibley, Justin Hunter)
         Code style fixes (Shawn M Moore)
         Remove Rafb (Justin Hunter)
         Remove Husk (Shawn M Moore)
+
+0.22    Thu Jun 10 12:58:99 2010
+        Add NOPASTE_SSH_MODE for chmod'ing after uploading (Thomas Sibley)
 
 0.21    Sat May  1 09:32:10 2010
         Add a --list_services/-L option (David Bremner) [rt.cpan.org #55562]

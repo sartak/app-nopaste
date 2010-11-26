@@ -7,7 +7,7 @@ use Module::Pluggable search_path => 'App::Nopaste::Service';
 use base 'Exporter';
 our @EXPORT_OK = 'nopaste';
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 sub nopaste {
     # process arguments {{{
