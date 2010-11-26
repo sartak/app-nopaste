@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 11;
 
 use_ok 'App::Nopaste';
 use_ok 'App::Nopaste::Service';
