@@ -26,6 +26,10 @@ sub run {
     return (1, $paster->paste_uri);
 }
 
+1;
+
+__END__
+
 =head1 NAME
 
 App::Nopaste::Service::PastebinCom - http://pastebin.com/
@@ -35,6 +39,4 @@ App::Nopaste::Service::PastebinCom - http://pastebin.com/
 L<WWW::Pastebin::PastebinCom::Create>
 
 =cut
-
-1;
 

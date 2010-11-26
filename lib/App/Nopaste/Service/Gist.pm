@@ -71,6 +71,8 @@ sub return {
 
 1;
 
+__END__
+
 =head1 NAME
 
 App::Nopaste::Service::Gist - http://gist.github.com/

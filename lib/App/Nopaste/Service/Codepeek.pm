@@ -32,6 +32,8 @@ sub return {
 
 1;
 
+__END__
+
 =head1 NAME
 
 App::Nopaste::Service::Codepeek - http://codepeek.com

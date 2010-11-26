@@ -73,6 +73,10 @@ sub fix_eqns {
     return $text;
 }
 
+1;
+
+__END__
+
 =head1 NAME
 
 App::Nopaste::Service::Mathbin - http://www.mathbin.net/
@@ -83,4 +87,3 @@ Jesse Luehrs, C<< <jluehrs2 at uiuc.edu> >>
 
 =cut
 
-1;
