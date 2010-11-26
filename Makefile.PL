@@ -1,5 +1,6 @@
 # Load the Module::Install bundled in ./inc/
 use inc::Module::Install;
+use Module::Install::GithubMeta;
 
 # Define metadata
 name           'App-Nopaste';
