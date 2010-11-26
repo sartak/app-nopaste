@@ -47,7 +47,9 @@ App::Nopaste::Service::ssh - copies files to your server using scp
 
 =head1 AUTHOR
 
-Kevin Falcone << <falcone@cpan.org> >>
+Kevin Falcone C<< <falcone@cpan.org> >>
+
+Thomas Sibley C<< <trs@bestpractical.com> >>
 
 =head1 ENVIRONMENT VARIABLES
 
