@@ -15,7 +15,8 @@ sub run {
     my $mode = $ENV{NOPASTE_SSH_MODE} || undef;
 
     my $date = strftime("%Y-%m-%d",localtime());
-    my $tmp = File::Temp->new( TEMPLATE => "${date}XXXXXXXX", CLEANUP => 1 );
+    my ($ext) = defined $args{'filename'} && $args{'filename'} =~ /(\.[^.]+?)$/ ? $1 : '';
+    my $tmp = File::Temp->new( TEMPLATE => "${date}XXXXXXXX", SUFFIX => $ext, UNLINK => 1 );
     my $filename = $tmp->filename;
     print $tmp $args{text} || return (0, "Can't write to tempfile $filename");
     close $tmp || return (0, "Can't write to tempfile $filename");
@@ -23,7 +24,7 @@ sub run {
     chmod oct($mode), $filename
         if defined $mode;
 
-    system('scp', '-q', $filename, "$server:$docroot");
+    system('scp', '-pq', $filename, "$server:$docroot");
 
     my ($volume, $dir, $file) = File::Spec->splitpath($filename);
     return (1, "$topurl/$file");
