@@ -97,16 +97,11 @@ sub run {
 
     my $text = $self->read_text;
 
-    my %args = (
-        text     => $text,
-        filename => $self->detect_filename,
-        desc     => $self->desc,
-        nick     => $self->nick,
-        lang     => $self->lang,
-        chan     => $self->chan,
-        services => $self->services,
-        private  => $self->private,
-    );
+    my %args = map {
+        $_->name => $_->get_value($self)
+    } $self->meta->get_all_attributes;
+
+    $args{text} ||= $text;
 
     $args{error_handler} = $args{warn_handler} = sub { }
         if $self->quiet;
@@ -204,4 +199,3 @@ If specified, use only the clipboard as input, using the L<Clipboard> module.
 If specified, do not warn or complain about broken services.
 
 =cut
-
