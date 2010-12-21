@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.24    Tue Dec 21 2010
+        Gist requires https (Ricardo SIGNES)
+
 0.23    Fri Nov 26 2010
         Preserve the source file's extension for ssh (Thomas Sibley)
         Use Config::GitLike instead of Config::INI::Reader (Thomas Sibley)
