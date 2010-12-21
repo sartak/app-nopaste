@@ -18,7 +18,7 @@ sub run {
     my %auth = $self->_get_auth;
 
     my $res = $ua->post(
-      'http://gist.github.com/api/v1/json/new',
+      'https://gist.github.com/api/v1/json/new',
       {
         'file_ext[gistfile1]'      => '.' . ( $arg{lang} || 'txt' ),
         'file_contents[gistfile1]' => $arg{text},
