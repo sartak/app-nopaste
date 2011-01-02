@@ -33,7 +33,15 @@ sub run {
 sub _get_auth {
     my ($self) = @_;
 
-    if (eval "require Git; 1") {
+    if ($ENV{GITHUB_USER} && $ENV{GITHUB_TOKEN}) {
+        my $user  = $ENV{GITHUB_USER};
+        my $token = $ENV{GITHUB_TOKEN};
+
+        return (
+            login => $user,
+            token => $token,
+        );
+    } elsif (eval "require Git; 1") {
         my $user  = Git::config('github.user');
         my $token = Git::config('github.token');
 
