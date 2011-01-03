@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.25    Mon Jan 3 2011
+        Add support for $GITHUB_USER/$GITHUB_TOKEN to Gist service (Maximilian Gass)
+
 0.24    Tue Dec 21 2010
         Gist requires https (Ricardo SIGNES)
 
