@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use base 'App::Nopaste::Service';
 
-sub uri { 'http://pastie.caboo.se/pastes/create' }
+sub uri { 'http://pastie.org/' }
 
 sub fill_form {
     my $self = shift;
