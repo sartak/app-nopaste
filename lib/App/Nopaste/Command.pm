@@ -69,6 +69,14 @@ has paste => (
     documentation => "If specified, use only the clipboard as input.",
 );
 
+has open_url => (
+    traits        => ['Getopt'],
+    is            => 'rw',
+    isa           => 'Bool',
+    cmd_aliases   => ['open', 'o'],
+    documentation => "If specified, automatically open the URL using the NOPASTE_OPEN environment variable.",
+);
+
 has quiet => (
     traits        => ['Getopt'],
     is            => 'rw',
@@ -117,6 +125,10 @@ sub run {
         require Clipboard;
         Clipboard->import;
         Clipboard->copy($url);
+    }
+
+    if ($self->open_url) {
+        system $ENV{NOPASTE_OPEN}, $url;
     }
 
     return $url;
@@ -198,6 +210,10 @@ L<Clipboard> module.
 =head2 -p, --paste
 
 If specified, use only the clipboard as input, using the L<Clipboard> module.
+
+=head2 -o, --open
+
+If specified, automatically open the URL using the C<NOPASTE_OPEN> environment variable.
 
 =head2 -q, --quiet
 
