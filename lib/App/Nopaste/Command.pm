@@ -74,7 +74,7 @@ has open_url => (
     is            => 'rw',
     isa           => 'Bool',
     cmd_aliases   => ['open', 'o'],
-    documentation => "If specified, automatically open the URL using xdg-open or the NOPASTE_OPEN environment variable if available.",
+    documentation => "If specified, automatically open the URL using Browser::Open.",
 );
 
 has quiet => (
@@ -128,7 +128,8 @@ sub run {
     }
 
     if ($self->open_url) {
-        system $ENV{NOPASTE_OPEN} || 'xdg-open', $url;
+        require Browser::Open;
+        Browser::Open::open_browser($url);
     }
 
     return $url;
@@ -213,8 +214,8 @@ If specified, use only the clipboard as input, using the L<Clipboard> module.
 
 =head2 -o, --open
 
-If specified, automatically open the URL using C<xdg-open> or the
-C<NOPASTE_OPEN> environment variable if available.
+If specified, automatically open the URL using L<Browser::Open>.  Browser::Open
+tries a number of different browser commands depending on your OS.
 
 =head2 -q, --quiet
 

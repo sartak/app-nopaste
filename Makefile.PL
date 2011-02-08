@@ -26,6 +26,9 @@ features(
         'File::Temp',
         'File::Spec'
     ],
+    'open URLs in a browser' => [
+        'Browser::Open',
+    ],
 );
 
 install_script 'bin/nopaste';
