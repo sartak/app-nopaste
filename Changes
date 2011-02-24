@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.26    Wed Feb 23 2011
+        Add --open (-o) for opening the nopaste in your browser (Thomas Sibley)
+
 0.25    Mon Jan 3 2011
         Add support for $GITHUB_USER/$GITHUB_TOKEN to Gist service (Maximilian Gass)
 
