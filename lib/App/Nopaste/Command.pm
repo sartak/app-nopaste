@@ -69,6 +69,14 @@ has paste => (
     documentation => "If specified, use only the clipboard as input.",
 );
 
+has open_url => (
+    traits        => ['Getopt'],
+    is            => 'rw',
+    isa           => 'Bool',
+    cmd_aliases   => ['open', 'o'],
+    documentation => "If specified, automatically open the URL using Browser::Open.",
+);
+
 has quiet => (
     traits        => ['Getopt'],
     is            => 'rw',
@@ -117,6 +125,11 @@ sub run {
         require Clipboard;
         Clipboard->import;
         Clipboard->copy($url);
+    }
+
+    if ($self->open_url) {
+        require Browser::Open;
+        Browser::Open::open_browser($url);
     }
 
     return $url;
@@ -198,6 +211,11 @@ L<Clipboard> module.
 =head2 -p, --paste
 
 If specified, use only the clipboard as input, using the L<Clipboard> module.
+
+=head2 -o, --open
+
+If specified, automatically open the URL using L<Browser::Open>.  Browser::Open
+tries a number of different browser commands depending on your OS.
 
 =head2 -q, --quiet
 
