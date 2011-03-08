@@ -138,6 +138,10 @@ sub run {
 sub read_text {
     my $self = shift;
 
+    if ($self->paste && @{ $self->extra_argv }) {
+        die "You may not specify --paste and files simultaneously.\n";
+    }
+
     if ($self->paste) {
         require Clipboard;
         Clipboard->import;
