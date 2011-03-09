@@ -10,7 +10,7 @@ our @EXPORT_OK = 'nopaste';
 our $VERSION = '0.26';
 
 sub nopaste {
-    # process arguments {{{
+    # process arguments
     # allow "nopaste($text)"
     unshift @_, 'text' if @_ == 1;
 
@@ -42,8 +42,8 @@ sub nopaste {
         or Carp::croak "You must specify the text to nopaste";
 
     $args{error_handler} ||= sub { warn "$_[1]: $_[0]" };
-    # }}}
-    # try to paste to each service in order {{{
+
+    # try to paste to each service in order
     for my $service (@{ $args{services} }) {
         $service = "App::Nopaste::Service::$service"
             unless $service =~ /^App::Nopaste::Service/;
@@ -70,7 +70,6 @@ sub nopaste {
         # failure!
         $args{error_handler}->($ret[1], $service);
     }
-    # }}}
 
     Carp::croak "No available App::Nopaste::Service modules found";
 }
