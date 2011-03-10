@@ -1,5 +1,10 @@
 Revision history for App-Nopaste
 
+0.27    Thu Mar 10 2011
+        Correct path to Pastie (Sebastian Paaske Tørholm )
+        Throw an error if you specify -p and files (Shawn M Moore)
+        Remove Mathbin; doy moved it to a separate dist (Shawn M Moore)
+
 0.26    Wed Feb 23 2011
         Add --open (-o) for opening the nopaste in your browser (Thomas Sibley)
 
