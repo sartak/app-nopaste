@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.28    Tue Mar 22 2011
+        If LWP is producing errors, *report them* (Ricardo SIGNES)
+
 0.27    Thu Mar 10 2011
         Correct path to Pastie (Sebastian Paaske Tørholm )
         Throw an error if you specify -p and files (Shawn M Moore)
