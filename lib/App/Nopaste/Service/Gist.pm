@@ -71,6 +71,10 @@ sub _get_auth {
 sub return {
     my ($self, $res) = @_;
 
+    if (($res->header('Client-Warning') || '') eq 'Internal response') {
+      return (0, "LWP Error: " . $res->content);
+    }
+
     my ($id) = $res->content =~ qr{"repo":"([0-9a-f]+)"};
 
     return (0, "Could not find paste link.") if !$id;
