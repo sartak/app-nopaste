@@ -9,16 +9,28 @@ use POSIX qw(strftime);
 sub run {
     my ($self, %args) = @_;
 
+    my $source = $args{'filename'};
+
     my $server  = $ENV{NOPASTE_SSH_SERVER}  || return (0,"No NOPASTE_SSH_SERVER set");
     my $docroot = $ENV{NOPASTE_SSH_DOCROOT} || return (0, "No NOPASTE_SSH_DOCROOT set");
     my $topurl  = $ENV{NOPASTE_SSH_WEBPATH} || "http://$server";
     my $mode    = $ENV{NOPASTE_SSH_MODE}    || undef;
+    my $usedesc = defined $ENV{NOPASTE_SSH_USE_DESCRIPTION}
+                    ? $ENV{NOPASTE_SSH_USE_DESCRIPTION}
+                    : 1;
 
     my $date = strftime("%Y-%m-%d",localtime());
-    my ($ext) = defined $args{'filename'} && $args{'filename'} =~ /(\.[^.]+?)$/ ? $1 : '';
+    my ($ext) = defined $source && $source =~ s/(\.[^.]+?)$// ? $1 : '';
+
+    my $suffix = $ext;
+    if ($usedesc) {
+        $args{'desc'} ||= $source || '';
+        $suffix = ($args{'desc'} ? '-' : '') . $args{'desc'} . $suffix;
+    }
+
     my $tmp = File::Temp->new(
         TEMPLATE => "${date}XXXXXXXX",
-        SUFFIX   => $ext,
+        SUFFIX   => $suffix,
         UNLINK   => 1,
     );
     my $filename = $tmp->filename;
@@ -72,6 +84,12 @@ The path for URLs. For example: C<http://sartak.org/paste>.
 
 Octal permissions mode to set for the temporary file before uploading.
 For example: C<0644>.
+
+=item NOPASTE_SSH_USE_DESCRIPTION
+
+Use the supplied description in the paste filename for easier identification of
+pastes.  Defaults to the source filename, if any, but is overridden by an
+explicit C<-d> or C<--description> command line argument.
 
 =back
 
