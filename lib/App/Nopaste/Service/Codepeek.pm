@@ -16,6 +16,7 @@ sub fill_form {
         fields => {
             'paste'    => $args{text},
             'language' => ucfirst $args{lang},
+            'privacy'  => $args{private},
         },
     );
 }

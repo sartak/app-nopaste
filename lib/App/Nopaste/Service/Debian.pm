@@ -176,6 +176,9 @@ sub fill_form {
     my $lang = $languages->{$args{lang}} if $args{lang};
 
     $mech->form_number(1);
+    if ($args{private}) {
+        $mech->tick('private', '1');
+    }
     $mech->submit_form(
         fields        => {
             code => $args{text},
