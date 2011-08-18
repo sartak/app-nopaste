@@ -57,7 +57,7 @@ sub nopaste {
 
             (my $file = "$service.pm") =~ s{::}{/}g;
             require $file;
-            next unless $service->available;
+            next unless $service->available(%args);
             next if $using_default && $service->forbid_in_default;
             $service->nopaste(%args);
         };
@@ -126,6 +126,7 @@ See the documentation in L<App::Nopaste::Command>.
         nick => "Your nickname",
         lang => "perl",
         chan => "#moose",
+        private => 1, # default: 0
 
         # this is the default, but maybe you want to do something different
         error_handler => sub {

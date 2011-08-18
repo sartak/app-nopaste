@@ -3,6 +3,12 @@ use strict;
 use warnings;
 use base 'App::Nopaste::Service';
 
+sub available {
+    my $self = shift;
+    my %args = @_;
+    return !$args{private};
+}
+
 sub uri { "http://nopaste.snit.ch" }
 
 1;

@@ -50,6 +50,7 @@ sub fill_form {
             do { $args{chan} ? (channel => $args{chan}) : () },
             do { $args{desc} ? (summary => $args{desc}) : () },
             do { $args{nick} ? (nick    => $args{nick}) : () },
+            private => (exists $args{private} && $args{private} ? 1 : 0),
         },
     );
 }
@@ -137,6 +138,10 @@ The IRC channel to which the paste belongs.
 =item lang
 
 The programming language of the body of text.
+
+=item private
+
+If false, the paste will be public (default).
 
 =back
 
