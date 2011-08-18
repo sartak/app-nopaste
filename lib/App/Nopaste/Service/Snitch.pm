@@ -6,7 +6,7 @@ use base 'App::Nopaste::Service';
 sub available {
     my $self = shift;
     my %args = @_;
-    return !$args{private};
+    return !(exists($args{private}) && $args{private});
 }
 
 sub uri { "http://nopaste.snit.ch" }
