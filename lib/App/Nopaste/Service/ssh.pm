@@ -24,7 +24,10 @@ sub run {
 
     my $suffix = $ext;
     if ($usedesc) {
-        $args{'desc'} ||= $source || '';
+        if (not $args{'desc'}) {
+            my ($vol, $dirs, $file) = File::Spec->splitpath($source);
+            $args{'desc'} = $file || '';
+        }
         $suffix = ($args{'desc'} ? '-' : '') . $args{'desc'} . $suffix;
     }
 
