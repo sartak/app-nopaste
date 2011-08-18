@@ -207,6 +207,10 @@ The channel for the nopaste, not always relevant. Usually tied to a pastebot in 
 
 The nopaste services to try, in order. You may also specify this in C<$NOPASTE_SERVICES> (space-separated list of service names, e.g. C<Shadowcat Gist>).
 
+=head2 -L, --list
+
+List available nopaste services.
+
 =head2 -x, --copy
 
 If specified, automatically copy the URL to your clipboard, using the
@@ -220,6 +224,10 @@ If specified, use only the clipboard as input, using the L<Clipboard> module.
 
 If specified, automatically open the URL using L<Browser::Open>.  Browser::Open
 tries a number of different browser commands depending on your OS.
+
+=head2 --private
+
+If specified, the paste access will be restricted to those that know the URL.
 
 =head2 -q, --quiet
 
