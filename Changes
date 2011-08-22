@@ -1,5 +1,14 @@
 Revision history for App-Nopaste
 
+0.29    Mon Aug 22 2011
+        Add --private to several services (François Gannaz)
+        Use Class::Load instead of require "Module/Name.pm" (Shawn M Moore)
+        Document --list and --private options (François Gannaz)
+        Less hardcoding of argument names to better support subclassing (Jason Mills)
+        New Ubuntu service (http://paste.ubuntu.com/) (gregoa@debian.org)
+        SSH: Add a small suggested Apache conf that's useful for paste directories (Thomas Sibley)
+        SSH: optionally use the supplied description in the paste filename (Thomas Sibley)
+
 0.28    Tue Mar 22 2011
         If LWP is producing errors, *report them* (Ricardo SIGNES)
 
