@@ -1,6 +1,9 @@
 *.swp
 MANIFEST
 MANIFEST.bak
+MANIFEST.SKIP
+MYMETA.json
+MYMETA.yml
 META.yml
 Makefile
 Makefile.old
