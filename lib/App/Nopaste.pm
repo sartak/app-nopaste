@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use 5.008003;
 use Module::Pluggable search_path => 'App::Nopaste::Service';
+use Class::Load 'load_class';
 
 use base 'Exporter';
 our @EXPORT_OK = 'nopaste';
@@ -55,8 +56,8 @@ sub nopaste {
                 $args{warn_handler}->($_[0], $service);
             } if $args{warn_handler};
 
-            (my $file = "$service.pm") =~ s{::}{/}g;
-            require $file;
+            load_class($service);
+
             next unless $service->available;
             next if $using_default && $service->forbid_in_default;
             $service->nopaste(%args);

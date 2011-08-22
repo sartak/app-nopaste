@@ -6,7 +6,6 @@ use Test::More;
     package App::Nopaste::Service::_MyTest;
     use Moose;
     extends 'App::Nopaste::Service';
-    $INC{'App/Nopaste/Service/_MyTest.pm'} = 'spoof';
 
     sub available { 1 }
     sub uri { 'test' }
@@ -21,7 +20,6 @@ use Test::More;
     package _MyTest::Cmd;
     use Moose;
     extends 'App::Nopaste::Command';
-    $INC{'_MyTest/Cmd.pm'} = 'spoof';
 
     has text => (
         is      => 'rw',
