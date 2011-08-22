@@ -75,5 +75,19 @@ For example: C<0644>.
 
 =back
 
+=head1 APACHE CONFIGURATION RECOMMENDATIONS
+
+The following is a recommended Apache configuration you can drop into
+C<.htaccess> in your paste dir.
+
+    RemoveHandler .cgi
+    RemoveHandler .pl
+    AddDefaultCharset utf-8
+    Options -ExecCGI -FollowSymLinks -Includes -MultiViews
+
+It prevents common means of script execution so that C<.pl> and C<.cgi>
+files won't run and defaults the character set to UTF-8 so browsers
+don't have to guess wrong.
+
 =cut
 
