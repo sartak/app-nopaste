@@ -1,6 +1,8 @@
 # Load the Module::Install bundled in ./inc/
 use inc::Module::Install;
 use Module::Install::GithubMeta;
+use Module::Install::ManifestSkip;
+use Module::Install::AutoManifest;
 
 # Define metadata
 name           'App-Nopaste';
@@ -35,5 +37,7 @@ features(
 install_script 'bin/nopaste';
 
 auto_install;
+manifest_skip;
+auto_manifest;
 WriteAll;
 
