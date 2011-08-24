@@ -94,7 +94,7 @@ has private => (
 
 has filename => (
     is            => 'rw',
-    isa           => 'Str',
+    isa           => 'Maybe[Str]',
     builder       => 'detect_filename'
 );
 
