@@ -92,6 +92,12 @@ has private => (
     documentation => "If specified, paste privately to services where possible.",
 );
 
+has filename => (
+    is            => 'rw',
+    isa           => 'Maybe[Str]',
+    builder       => 'detect_filename'
+);
+
 sub run {
     my $self = shift;
 
