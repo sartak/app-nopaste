@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.30    Fri Aug 26 2011
+        Fix App::Nopaste::ssh's new filename description feature (Kevin Falcone)
+
 0.29    Mon Aug 22 2011
         Add --private to several services (François Gannaz)
         Use Class::Load instead of require "Module/Name.pm" (Shawn M Moore)
