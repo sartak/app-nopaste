@@ -5,6 +5,7 @@ use base 'App::Nopaste::Service';
 use File::Temp;
 use File::Spec;
 use POSIX qw(strftime);
+use URI::Escape qw(uri_escape);
 
 sub run {
     my ($self, %args) = @_;
@@ -49,6 +50,8 @@ sub run {
     system('scp', '-pq', $filename, "$server:$docroot");
 
     my ($volume, $dir, $file) = File::Spec->splitpath($filename);
+    $file = uri_escape($file);
+
     return (1, "$topurl/$file");
 }
 

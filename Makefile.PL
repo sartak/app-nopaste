@@ -14,6 +14,7 @@ requires       'Module::Pluggable';
 requires       'Moose' => '0.74';
 requires       'MooseX::Getopt' => '0.17';
 requires       'Class::Load';
+requires       'URI::Escape';
 
 features(
     'pastebin.com support' => [
