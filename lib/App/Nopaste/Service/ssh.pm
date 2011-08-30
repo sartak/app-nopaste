@@ -37,8 +37,9 @@ sub run {
         TEMPLATE => "${date}XXXXXXXX",
         SUFFIX   => $suffix,
         UNLINK   => 1,
+        TMPDIR   => 1,
     );
-    my $filename = $tmp->filename;
+    my $filename = File::Spec->rel2abs($tmp->filename);
 
     print $tmp $args{text}
         or return (0, "Can't write to tempfile $filename");
