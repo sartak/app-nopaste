@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.31    Tue Aug 30 2011
+        Better filenames for ssh service (Thomas Sibley)
+
 0.30    Fri Aug 26 2011
         Fix App::Nopaste::ssh's new filename description feature (Kevin Falcone)
 
