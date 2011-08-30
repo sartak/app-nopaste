@@ -5,6 +5,7 @@ use base 'App::Nopaste::Service';
 use File::Temp;
 use File::Spec;
 use POSIX qw(strftime);
+use URI::Escape qw(uri_escape);
 
 sub run {
     my ($self, %args) = @_;
@@ -28,6 +29,7 @@ sub run {
             my ($vol, $dirs, $file) = File::Spec->splitpath($source);
             $args{'desc'} = $file || '';
         }
+        $args{'desc'} =~ s/\s+/+/g; # more readable than %20
         $suffix = ($args{'desc'} ? '-' : '') . $args{'desc'} . $suffix;
     }
 
@@ -35,8 +37,9 @@ sub run {
         TEMPLATE => "${date}XXXXXXXX",
         SUFFIX   => $suffix,
         UNLINK   => 1,
+        TMPDIR   => 1,
     );
-    my $filename = $tmp->filename;
+    my $filename = File::Spec->rel2abs($tmp->filename);
 
     print $tmp $args{text}
         or return (0, "Can't write to tempfile $filename");
@@ -49,6 +52,9 @@ sub run {
     system('scp', '-pq', $filename, "$server:$docroot");
 
     my ($volume, $dir, $file) = File::Spec->splitpath($filename);
+    $file = uri_escape($file);
+    $file =~ s/%2b/+/gi;
+
     return (1, "$topurl/$file");
 }
 
