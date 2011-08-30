@@ -29,6 +29,7 @@ sub run {
             my ($vol, $dirs, $file) = File::Spec->splitpath($source);
             $args{'desc'} = $file || '';
         }
+        $args{'desc'} =~ s/\s+/+/g; # more readable than %20
         $suffix = ($args{'desc'} ? '-' : '') . $args{'desc'} . $suffix;
     }
 
@@ -51,6 +52,7 @@ sub run {
 
     my ($volume, $dir, $file) = File::Spec->splitpath($filename);
     $file = uri_escape($file);
+    $file =~ s/%2b/+/gi;
 
     return (1, "$topurl/$file");
 }
