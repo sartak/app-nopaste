@@ -140,10 +140,10 @@ App::Nopaste::Service::Ubuntu - http://paste.ubuntu.com/
 
 =head1 AUTHOR
 
-gregor herrmann, C<< <gregoa@debian.org> >
+gregor herrmann, C<< <gregoa@debian.org> >>
 
 (Based on App::Nopaste::Service::Debian, written by
-Ryan Niebur, C<< <gregoa@debian.org> >>)
+Ryan Niebur, C<< <ryanryan52@gmail.com> >>)
 
 =cut
 

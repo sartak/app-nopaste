@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+NEXT
+        Fix some attribution errors (Salvatore Bonaccorso) [rt.cpan.org #70434]
+
 0.31    Tue Aug 30 2011
         Better filenames for ssh service (Thomas Sibley)
 
