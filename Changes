@@ -1,6 +1,7 @@
 Revision history for App-Nopaste
 
-NEXT
+0.32    Fri Oct 21 2011
+        Better error reporting (David Golden)
         Fix some attribution errors (Salvatore Bonaccorso) [rt.cpan.org #70434]
 
 0.31    Tue Aug 30 2011

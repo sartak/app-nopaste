@@ -8,7 +8,7 @@ use Class::Load 'load_class';
 use base 'Exporter';
 our @EXPORT_OK = 'nopaste';
 
-our $VERSION = '0.31';
+our $VERSION = '0.32';
 
 sub nopaste {
     # process arguments
