@@ -42,7 +42,11 @@ sub nopaste {
     defined $args{text}
         or Carp::croak "You must specify the text to nopaste";
 
-    $args{error_handler} ||= sub { warn "$_[1]: $_[0]" };
+    $args{error_handler} ||= sub {
+        my ($msg, $srv) = @_;
+        $msg =~ s/\n*$/\n/;
+        warn "$srv: $msg"
+    };
 
     # try to paste to each service in order
     for my $service (@{ $args{services} }) {
