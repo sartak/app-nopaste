@@ -71,6 +71,10 @@ sub _get_auth {
 sub return {
     my ($self, $res) = @_;
 
+    if ($res->is_error) {
+      return (0, "Failed: " . $res->status_line);
+    }
+
     if (($res->header('Client-Warning') || '') eq 'Internal response') {
       return (0, "LWP Error: " . $res->content);
     }
