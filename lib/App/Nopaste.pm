@@ -163,6 +163,8 @@ message and the service that issued it.
 
 L<WebService::NoPaste>, L<WWW::Pastebin::PastebinCom::Create>, L<Devel::REPL::Plugin::Nopaste>
 
+L<http://perladvent.org/2011/2011-12-14.html>
+
 =head1 AUTHOR
 
 Shawn M Moore, C<sartak@gmail.com>
