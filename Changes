@@ -1,5 +1,8 @@
 Revision history for App-Nopaste
 
+0.33    Thu Dec 15 2011
+        Support for --description in Gist (zengargoyle@gmail.com) [rt.cpan.org #73272]
+
 0.32    Fri Oct 21 2011
         Better error reporting (David Golden)
         Fix some attribution errors (Salvatore Bonaccorso) [rt.cpan.org #70434]
