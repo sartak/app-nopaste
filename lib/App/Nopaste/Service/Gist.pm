@@ -52,9 +52,44 @@ sub _get_auth {
     Carp::croak(
         join "\n",
         "Export GITHUB_OAUTH_TOKEN first. For example:",
-        q{curl -X POST 'https://USERNAME:PASSWORD@api.github.com/authorizations'}
-          . q(-d '{"scopes":["gist"],"note":"App::Nopaste"}')
+        "    perl -Ilib -MApp::Nopaste::Service::Gist -e 'App::Nopaste::Service::Gist->create_token'"
     );
+}
+
+sub create_token {
+    my ($self) = @_;
+
+    local $| = 1;
+    print "Username: ";
+    chomp(my $username = <>);
+    print "Password: ";
+    chomp(my $password = <>);
+    print "\n\n";
+
+    exit unless $username && $password;
+
+    my $parameters = {
+        scopes   => ["gist"],
+        note     => "App::Nopaste",
+        note_url => "https://metacpan.org/module/App::Nopaste",
+    };
+
+    my $ua = LWP::UserAgent->new;
+
+    my $request = HTTP::Request->new(POST => 'https://api.github.com/authorizations');
+    $request->authorization_basic($username, $password);
+    $request->content(JSON::encode_json($parameters));
+
+    my $response = $ua->request($request);
+
+    my $response_content = JSON::decode_json($response->decoded_content);
+
+    if ($response_content->{token} ) {
+        print "GITHUB_OAUTH_TOKEN=$response_content->{token}\n";
+    }
+    else {
+        print $response_content->{message} || "Unspecified error", "\n";
+    }
 }
 
 sub return {
@@ -89,6 +124,10 @@ obtained via curl:
 
     curl -X POST 'https://USERNAME:PASSWORD@api.github.com/authorizations' \
         -d '{"scopes":["gist"],"note":"App::Nopaste"}'
+
+or you can use this module to do the same:
+
+    perl -Ilib -MApp::Nopaste::Service::Gist -e 'App::Nopaste::Service::Gist->create_token'
 
 This will grant gist rights to the L<App::Nopaste>, don't worry you can revoke
 access rights anytime from the GitHub profile settings. Search for C<token> in
