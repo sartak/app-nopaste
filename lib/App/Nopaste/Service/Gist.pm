@@ -126,7 +126,7 @@ obtained via curl:
 
 or you can use this module to do the same:
 
-    perl -Ilib -MApp::Nopaste::Service::Gist -e 'App::Nopaste::Service::Gist->create_token'
+    perl -MApp::Nopaste::Service::Gist -e 'App::Nopaste::Service::Gist->create_token'
 
 This will grant gist rights to the L<App::Nopaste>, don't worry you can revoke
 access rights anytime from the GitHub profile settings. Search for C<token> in
