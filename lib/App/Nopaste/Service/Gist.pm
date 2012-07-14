@@ -49,11 +49,10 @@ sub _get_auth {
         return (oauth_token => $oauth_token);
     }
 
-    Carp::croak(
-        join "\n",
+    die join("\n",
         "Export GITHUB_OAUTH_TOKEN first. For example:",
         "    perl -Ilib -MApp::Nopaste::Service::Gist -e 'App::Nopaste::Service::Gist->create_token'"
-    );
+    ) . "\n";
 }
 
 sub create_token {
