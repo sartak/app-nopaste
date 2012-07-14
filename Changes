@@ -1,5 +1,10 @@
 Revision history for App-Nopaste
 
+0.34    Sat Jul 14 2012
+        Support for GitHub's v3 API [Вячеслав Тихановский (vti)]
+            Thanks also to Ricardo SIGNES for the call to arms:
+                http://rjbs.manxome.org/rubric/entry/1964
+
 0.33    Thu Dec 15 2011
         Support for --description in Gist (zengargoyle@gmail.com) [rt.cpan.org #73272]
 
