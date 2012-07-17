@@ -23,8 +23,12 @@ sub run {
         defined $arg{desc} ? (description => $arg{desc}) : (),
     };
 
+    my $filename = defined $arg{filename}
+                 ? File::Basename::basename($arg{filename})
+                 : 'nopaste.txt';
+
     $content->{files} = {
-        File::Basename::basename($arg{filename}) => {
+        $filename => {
             content => $arg{text}
         }
     };
