@@ -1,102 +1,90 @@
 package App::Nopaste::Command;
-use Moose;
-with 'MooseX::Getopt';
+
+use strict;
+use warnings;
+
+use Getopt::Long::Descriptive ();
 
 use App::Nopaste;
 
-has desc => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Str',
-    cmd_aliases   => ['description', 'd'],
-    documentation => "The one line description of your paste. The default is usually the first few characters of your text.",
-);
+sub new_with_options {
+    my $class = shift;
+    my ($opt, $usage) = Getopt::Long::Descriptive::describe_options(
+       "$0 %o",
+       ['help|usage|?|h', 'Prints this usage information' ],
+       ['desc|description|d=s',
+    'The one line description of your paste. The default is usually the first few characters of your text.'
+       ],
+       ['nick|nickname|name|n=s', 'Your nickname, usually displayed with the paste.'],
 
-has nick => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Str',
-    cmd_aliases   => ['nickname', 'name', 'n'],
-    documentation => "Your nickname, usually displayed with the paste.",
-);
+       ['lang|language|l=s', 'The language of the nopaste. Default: perl.',
+          { default       => 'perl' },
+       ],
 
-has lang => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Str',
-    default       => 'perl',
-    cmd_aliases   => ['language', 'l'],
-    documentation => "The language of the nopaste. Default: perl.",
-);
+       ['chan|channel|c=s',
+    'The channel for the nopaste, not always relevant. Usually tied to a pastebot in that channel which will announce your paste.',
+       ],
 
-has chan => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Str',
-    cmd_aliases   => ['channel', 'c'],
-    documentation => "The channel for the nopaste, not always relevant. Usually tied to a pastebot in that channel which will announce your paste.",
-);
+       ['services|service|s=s',
+    'The nopaste services to try, in order. You may also specify this in the env var NOPASTE_SERVICES.',
+       ],
 
-has services => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'ArrayRef[Str]',
-    cmd_aliases   => ['service', 's'],
-    documentation => "The nopaste services to try, in order. You may also specify this in the env var NOPASTE_SERVICES.",
-);
+       ['list_services|list|L', 'List available nopaste services'],
 
-has list_services => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Bool',
-    cmd_aliases   => ['list', 'L'],
-    documentation => "List available nopaste services",
-);
+       ['copy|x', 'If specified, automatically copy the URL to your clipboard.'],
 
-has copy => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Bool',
-    cmd_aliases   => ['x'],
-    documentation => "If specified, automatically copy the URL to your clipboard.",
-);
+       ['paste|p', 'If specified, use only the clipboard as input.'],
 
-has paste => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Bool',
-    cmd_aliases   => ['p'],
-    documentation => "If specified, use only the clipboard as input.",
-);
+       ['open_url|open|o', 'If specified, automatically open the URL using Browser::Open.'],
 
-has open_url => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Bool',
-    cmd_aliases   => ['open', 'o'],
-    documentation => "If specified, automatically open the URL using Browser::Open.",
-);
+       ['quiet|q', 'If specified, do not warn or complain about broken services.'],
 
-has quiet => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Bool',
-    cmd_aliases   => ['q'],
-    documentation => "If specified, do not warn or complain about broken services.",
-);
+       ['private', 'If specified, paste privately to services where possible.'],
+    );
 
-has private => (
-    traits        => ['Getopt'],
-    is            => 'rw',
-    isa           => 'Bool',
-    documentation => "If specified, paste privately to services where possible.",
-);
+    print($usage->text), exit if $opt->help;
 
-has filename => (
-    is            => 'rw',
-    isa           => 'Maybe[Str]',
-    builder       => 'detect_filename'
+    my $self = $class->new({
+       extra_argv => [@ARGV],
+       map { $_ => $opt->$_ } qw(
+         desc nick lang chan list_services copy paste open_url quiet private services
+       ),
+    });
+}
+
+sub new {
+   my $class = shift;
+   my $self;
+   if (!ref $_[0]) {
+      $self = { @_ };
+   } else {
+      $self = $_[0]
+   }
+
+   $self->{services} = [ split /\s+/, $self->{services} ]
+      if defined $self->{services} && !ref $self->{services};
+
+   bless $self, $class;
+
+   return $self
+}
+my @acc = qw(
+    desc nick lang chan list_services copy paste open_url quiet private usage
+    extra_argv services
 );
+for my $a (@acc) {
+   no strict 'refs';
+
+   *{__PACKAGE__ . '::' . $a } = sub { $_[0]->{$a} }
+}
+sub filename {
+    my $self  = shift;
+    my @files = @{ $self->extra_argv };
+
+    return undef unless @files;
+    return undef if $self->paste or $files[0] eq '-';
+    return $files[0];
+}
 
 sub run {
     my $self = shift;
@@ -111,9 +99,7 @@ sub run {
 
     my $text = $self->read_text;
 
-    my %args = map {
-        $_->name => $_->get_value($self)
-    } $self->meta->get_all_attributes;
+    my %args = map { $_ => $self->$_ } @acc, qw(filename);
 
     $args{text} ||= $text;
 
@@ -153,18 +139,6 @@ sub read_text {
     local $/;
     return <>;
 }
-
-sub detect_filename {
-    my $self  = shift;
-    my @files = @{ $self->extra_argv };
-
-    return undef unless @files;
-    return undef if $self->paste or $files[0] eq '-';
-    return $files[0];
-}
-
-__PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
