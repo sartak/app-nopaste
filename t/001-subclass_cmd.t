@@ -4,8 +4,7 @@ use Test::More;
 
 {
     package App::Nopaste::Service::_MyTest;
-    use Moose;
-    extends 'App::Nopaste::Service';
+    use base 'App::Nopaste::Service';
 
     sub available { 1 }
     sub uri { 'test' }
@@ -18,16 +17,9 @@ use Test::More;
 
 {
     package _MyTest::Cmd;
-    use Moose;
-    extends 'App::Nopaste::Command';
+    use base 'App::Nopaste::Command';
 
-    has text => (
-        is      => 'rw',
-        isa     => 'Str',
-        default => 'test',
-    );
-
-    sub read_text {}
+    sub read_text { 'test' }
 }
 
 my $input = {

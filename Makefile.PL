@@ -11,8 +11,7 @@ githubmeta;
 
 requires       'WWW::Mechanize';
 requires       'Module::Pluggable';
-requires       'Moose' => '0.74';
-requires       'MooseX::Getopt' => '0.17';
+requires       'Getopt::Long::Descriptive' => '0.90';
 requires       'Class::Load';
 requires       'URI::Escape';
 requires       'JSON';
