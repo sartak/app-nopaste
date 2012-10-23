@@ -110,6 +110,7 @@ sub run {
     }
 
     my $text = $self->read_text;
+    utf8::decode($text);
 
     my %args = map {
         $_->name => $_->get_value($self)
