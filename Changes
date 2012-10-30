@@ -1,5 +1,13 @@
 Revision history for App-Nopaste
 
+0.90    Tue Oct 30 2012
+        Port from Moose and MooseX::Getopt to Getopt::Long::Descriptive (frew)
+            App::Nopaste is not using any interesting Moose features,
+            so it doesn't make sense to pay the startup cost (even
+            though it's probably dominated by network latency)
+
+            Please report any regressions!
+
 0.35    Tue Jul 17 2012
         Don't barf when gist-ing STDIN. (Ricardo SIGNES)
 
