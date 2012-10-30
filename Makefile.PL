@@ -11,7 +11,7 @@ githubmeta;
 
 requires       'WWW::Mechanize';
 requires       'Module::Pluggable';
-requires       'Getopt::Long::Descriptive' => '0.90';
+requires       'Getopt::Long::Descriptive' => '0.090';
 requires       'Class::Load';
 requires       'URI::Escape';
 requires       'JSON';
