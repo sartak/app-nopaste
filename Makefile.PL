@@ -23,9 +23,6 @@ features(
     'copying of URLs with -x/--copy' => [
         'Clipboard',
     ],
-    'Github authentication (having Git installed works too)' => [
-        'Config::GitLike' => '0.00',
-    ],
     'copy files to remote server with scp' => [
         'File::Temp',
         'File::Spec'
