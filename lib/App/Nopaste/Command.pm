@@ -98,6 +98,7 @@ sub run {
     }
 
     my $text = $self->read_text;
+    utf8::decode($text);
 
     my %args = map { $_ => $self->$_ } @acc, qw(filename);
 
