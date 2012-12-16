@@ -25,7 +25,7 @@ sub run {
 
     my $filename = defined $arg{filename}
                  ? File::Basename::basename($arg{filename})
-                 : 'nopaste.txt';
+                 : 'nopaste';
 
     $content->{files} = {
         $filename => {
