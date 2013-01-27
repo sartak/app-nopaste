@@ -3,6 +3,8 @@ Revision history for App-Nopaste
 0.91    Sun Jan 27 2013
         Decode incoming text as utf8 (Jesse Luehrs)
         Support for GITHUB_USER and GITHUB_PASS (Rafael Kitover)
+        Name the gist file `nopaste` not `nopaste.txt` for possible syntax highlighting (Rafael Kitover)
+        Use decode_json not a regular expression to decode Gist response body (Shawn M Moore)
 
 0.90    Tue Oct 30 2012
         Port from Moose and MooseX::Getopt to Getopt::Long::Descriptive (frew)
