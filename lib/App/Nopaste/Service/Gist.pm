@@ -126,7 +126,7 @@ sub return {
       return (0, "LWP Error: " . $res->content);
     }
 
-    my ($id) = $res->content =~ qr{"id":"([0-9a-f]+)"};
+    my $id = JSON::decode_json($res->content)->{id};
 
     return (0, "Could not find paste link.") if !$id;
     return (1, "http://gist.github.com/$id");
