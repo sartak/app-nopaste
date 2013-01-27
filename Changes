@@ -5,6 +5,7 @@ Revision history for App-Nopaste
         Support for GITHUB_USER and GITHUB_PASS (Rafael Kitover)
         Name the gist file `nopaste` not `nopaste.txt` for possible syntax highlighting (Rafael Kitover)
         Use decode_json not a regular expression to decode Gist response body (Shawn M Moore)
+        Give a hint to perldoc App::Nopaste::Service::Gist on 401 (Shawn M Moore)
 
 0.90    Tue Oct 30 2012
         Port from Moose and MooseX::Getopt to Getopt::Long::Descriptive (frew)

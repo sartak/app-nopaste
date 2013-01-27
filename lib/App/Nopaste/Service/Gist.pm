@@ -119,7 +119,11 @@ sub return {
     my ($self, $res) = @_;
 
     if ($res->is_error) {
-      return (0, "Failed: " . $res->status_line);
+        my $text = $res->status_line;
+        if ($res->code == 401) {
+            $text .= "\nYou may need to authorize $0. See `perldoc " . __PACKAGE__ . "`";
+        }
+        return (0, "Failed: " . $text);
     }
 
     if (($res->header('Client-Warning') || '') eq 'Internal response') {
