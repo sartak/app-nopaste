@@ -7,7 +7,7 @@ my @content = (
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>pasting to magnet_web</title>    
+    <title>pasting to magnet_web</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   </head>
   <body>
@@ -65,7 +65,7 @@ FORM
   <meta http-equiv="refresh" content="5;url=http://paste.scsys.co.uk/211360">
  </head>
  <body>
-  
+
   <p>
    This content is stored as
    <a href='http://paste.scsys.co.uk/211360'>http://paste.scsys.co.uk/211360</a>. You will be redirected
@@ -102,16 +102,14 @@ LWP::Protocol::implementor('http' => 'LWP::Protocol::test');
 
 {
     package App::Nopaste::Service::MyTest;
-    use Moose;
-    extends 'App::Nopaste::Service';
+    use base 'App::Nopaste::Service';
 
     sub uri { 'http://localhost/' }
 }
 
 {
     package MyTest::Cmd;
-    use Moose;
-    extends 'App::Nopaste::Command';
+    use base 'App::Nopaste::Command';
 
     sub read_text { '‘test’' }
 }
