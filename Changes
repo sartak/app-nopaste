@@ -1,5 +1,9 @@
 Revision history for App-Nopaste
 
+0.92    Fri Apr 26 2013
+        Fix the language mappins for Ubuntu's pastebin (Sergey Romanov)
+        Don't need to load Moose in the tests (Sergey Romanov)
+
 0.91    Sun Jan 27 2013
         Decode incoming text as utf8 (Jesse Luehrs)
         Support for GITHUB_USER and GITHUB_PASS (Rafael Kitover)
