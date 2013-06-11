@@ -21,7 +21,7 @@ sub run {
                     : 1;
 
     my $date = strftime("%Y-%m-%d",localtime());
-    my ($ext) = defined $source && $source =~ s/(\.[^.]+?)$// ? $1 : '';
+    my ($ext) = defined $source && $source =~ s/(\.[^.\/\\]+?)$// ? $1 : '';
 
     my $suffix = $ext;
     if ($usedesc) {
