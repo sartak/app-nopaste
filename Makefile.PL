@@ -18,7 +18,7 @@ requires       'JSON';
 
 features(
     'pastebin.com support' => [
-        'WWW::Pastebin::PastebinCom::Create',
+        'WWW::Pastebin::PastebinCom::API',
     ],
     'copying of URLs with -x/--copy' => [
         'Clipboard',

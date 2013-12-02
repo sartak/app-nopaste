@@ -4,26 +4,31 @@ use warnings;
 use base 'App::Nopaste::Service';
 
 sub available {
-    eval "require WWW::Pastebin::PastebinCom::Create; 1"
+    eval "require WWW::Pastebin::PastebinCom::API; 1"
 }
 
 sub run {
     my $self = shift;
     my %args = @_;
 
-    require WWW::Pastebin::PastebinCom::Create;
+    require WWW::Pastebin::PastebinCom::API;
 
-    $args{poster} = delete $args{nick} if defined $args{nick};
+    my $text = delete $args{text} if defined $args{text};
     $args{format} = delete $args{lang} if defined $args{lang};
 
-    my $paster = WWW::Pastebin::PastebinCom::Create->new;
+    my $api_key = $ENV{PASTEBIN_API_KEY};
+
+    my $paster = WWW::Pastebin::PastebinCom::API->new(
+        api_key => $api_key
+    );
     my $ok = $paster->paste(
-        expiry => 'm',
+        $text,
+        expiry => '1m',
         %args,
     );
 
     return (0, $paster->error) unless $ok;
-    return (1, $paster->paste_uri);
+    return (1, $paster->paste_url);
 }
 
 1;
@@ -34,9 +39,16 @@ __END__
 
 App::Nopaste::Service::PastebinCom - http://pastebin.com/
 
+=head1 Pastebin.com Authorization
+
+In order to create pastes to Pastebin.com, you need to get an API key.
+Please login to your Pastebin.com account and view
+L<http://pastebin.com/api#1> to get your key, and export it as the
+C<PASTEBIN_API_KEY> environment variable.
+
 =head1 SEE ALSO
 
-L<WWW::Pastebin::PastebinCom::Create>
+L<WWW::Pastebin::PastebinCom::API>
 
 =cut
 
